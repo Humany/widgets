@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "core": "C:\\Development\\Humany\\humany-widget-mono\\packages\\widget-core\\api\\"
+  },
+  "apis": {
+    "conversation": "C:\\Development\\Humany\\humany-widget-mono\\packages\\widget-conversation\\readme.md",
+    "tracking": "C:\\Development\\Humany\\humany-widget-mono\\packages\\widget-tracking\\readme.md",
+    "serviceclient": "C:\\Development\\Humany\\serviceclient\\readme.md"
+  }
+}
