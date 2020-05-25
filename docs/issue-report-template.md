@@ -13,6 +13,9 @@ _What is the actual behaviour?_
 ## Steps to Reproduce
 _Specify how this bug can be reproduced, step by step._
 
+## Has this been working before?
+_If yes, please specify when the bug was introduced (version or date)._
+
 ## Environment
 
 ### Link to Widget
@@ -36,3 +39,6 @@ _If it's a self-hosting setup, specify all packages and versions used in the dis
 @humany/widget-types-grid@1.0.23
 ...
 ```
+
+## Additional details / screenshot
+_Provide any additional information about this issue, such as error logs and screenshots._
