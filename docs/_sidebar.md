@@ -3,6 +3,7 @@
 - Orchestration API
 
   - [Humany object (Environment)](orchestration/#environment)
+  - [Commands](orchestration/#commands)
   - [Configuration](orchestration/#configuration)
   - [Implementations](orchestration/#implementations)
   - [Widgets](orchestration/#widgets)
@@ -20,9 +21,9 @@
 
 - Other APIs
 
-  - [Conversation API](api/conversation.md)
-  - [Tracking API](api/tracking.md)
-  - [Service Client](api/serviceclient.md)
+  - [Conversation API](api/@humany/widget-conversation/readme.md)
+  - [Tracking API](api/@humany/widget-tracking/readme.md)
+  - [Service Client](api/@humany/serviceclient/readme.md)
 
 - Configuration Schema
 

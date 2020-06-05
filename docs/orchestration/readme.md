@@ -1,12 +1,10 @@
 # Orchestration API
 
 ## Humany object (Environment)
-The Orchestration API consists of a global [`Humany`](/modules/core/classes/humany.html) object, available as `window.humany` for default distributions. It orchestrates widgets and implementations and provides an API for controlling the life-cycle of widgets.
+The Orchestration API consists of a global [`Humany`](/modules/core/classes/humany.html) object, available as `window.humany` on default distributions. It orchestrates widgets and implementations and provides an API for controlling the life-cycle of widgets and their plugins. Each widget is represented by a `Widget` object. 
 
 ### List available widgets
-The `humany.widgets` contains all available widgets on the runtime. A individual `Widget` object can be used to control its life-cycle as well as invoking commands.
-
-Run the following command to list all available widgets for a page:
+The `widgets` property of the `Humany` object contains all registered widgets on the current page. Run the following command to list all available widgets for a page:
 ```js
 humany.widgets.all();
 ```
@@ -28,6 +26,33 @@ humany.widgets.find({
   tenant: 'acme',
 });
 ```
+
+## Commands
+The [`Widget`](/modules/@humany/widget-core/classes/widget.html) object exposes an [`invoke()`](/modules/@humany/widget-core/classes/widget.html#invoke) method which can be used to send commands to a widget. Available commands are unique for each widget type, but from version 5 of the runtime (in contrast to previous versions) only one widget type is available; ACE One Widget.
+
+The `invoke()` method accepts two arguments, the `commandName` and `data`. The `data` argument will be delegated to the function on the [`WidgetType`](/modules/@humany/widget-core/classes/widgettype.html) with the specified name.
+
+### Example
+The following code activates the widget and then renders it inside the provided DOM element.
+```js
+const widgetDOMElement = document.getElementById('my-widget-container');
+widget.invoke('render', { widgetDOMElement })
+```
+!> To be able to invoke commands on a widget it must first be activated.
+
+### Available commands for ACE One Widget
+
+### `render(args: RenderData)`
+Renders the widget to the DOM using the specified arguments.
+
+|Name|Type|Required|Default|Description|
+|----|----|--------|-------|-----------|
+|`widgetDOMElement`|`DOMElement`|No|`document.createElement('div')`|The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created.|
+|`triggerDOMElement`|`DOMElement`|No|`undefined`|The `DOMElement` to be used as "trigger element" for starting the widget.|
+|
+
+### `hide()`
+Hides the widget. The widget will keep its current state but will not be visible to the user.
 
 ## Configuration
 On the `humany` object, call the `configure()` function to specify a configuration handler. The handler will receive two arguments. The first is a `Configurator` object, which is used to apply configuration commands for an implementation. Configuration commands will by default be applied to all containing widgets. The second argument is the implementation on which the commands will be applied to.
