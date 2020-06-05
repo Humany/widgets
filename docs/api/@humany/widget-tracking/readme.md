@@ -1,0 +1,2 @@
+# `@humany/widget-tracking`
+_**This is a beta version of the ACE Knowledge Widget Framework** which is still undergoing final testing before its official release. Breaking changes can be introduced from one version to another._

@@ -1,0 +1,12 @@
+{
+  "name": "widgets",
+  "version": "1.0.0",
+  "repository": "https://github.com/Humany/widgets.git",
+  "private": true,
+  "scripts": {
+    "import-docs": "node scripts/import-docs.js"
+  },
+  "devDependencies": {
+    "ncp": "^2.0.0"
+  }
+}
