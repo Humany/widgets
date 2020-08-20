@@ -19,7 +19,7 @@ _If yes, please specify when the bug was introduced (version or date)._
 ## Environment
 
 ### Link to Widget
-_URL to a page where the widget is implemented and where the particular error can be reproduced._
+_URL to a page where the widget is implemented and where the particular error can be reproduced. Ensure the widget is available and not removed until case is closed.
 
 ### Link to Repository (optional)
 _URL to a Git repository where the particular error can be repdocued._
