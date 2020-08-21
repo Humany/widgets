@@ -1,7 +1,7 @@
 # Orchestration API
 
 ## Humany object (Environment)
-The Orchestration API consists of a global [`Humany`](/modules/@humany/widget-core/classes/humany.html) object, available as `window.humany` on default distributions. It orchestrates widgets and implementations and provides an API for controlling the life-cycle of widgets and their plugins. Each widget is represented by a `Widget` object. 
+The Orchestration API consists of a global [`Humany`](/modules/core/classes/humany.html) object, available as `window.humany` on default distributions. It orchestrates widgets and implementations and provides an API for controlling the life-cycle of widgets and their plugins. Each widget is represented by a `Widget` object. 
 
 ### List available widgets
 The `widgets` property of the `Humany` object contains all registered widgets on the current page. Run the following command to list all available widgets for a page:

@@ -1,13 +1,11 @@
 - [Introduction](/)
 
-- Orchestration API
+- Core APIs
+  - [Orchestration API](orchestration.md)
+  - [Component API](component.md)
 
-  - [Humany object (Environment)](orchestration/#environment)
-  - [Commands](orchestration/#commands)
-  - [Configuration](orchestration/#configuration)
-  - [Implementations](orchestration/#implementations)
-  - [Widgets](orchestration/#widgets)
-  - [Plugins](orchestration/#plugins)
+- Other APIs
+  - [Conversation API](api/@humany/widget-conversation/readme.md)
 
 - Component API
 
