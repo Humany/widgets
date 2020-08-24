@@ -4,7 +4,7 @@
 - @humany/widget-callback
 - @humany/widget-components
 - @humany/widget-conversation
-- [@humany/widget-core](/modules/@humany/widget-core)
+- [@humany/widget-core](modules/@humany/widget-core)
 - @humany/widget-forms
 - @humany/widget-plugins
 - @humany/widget-routing

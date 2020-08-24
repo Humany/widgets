@@ -12,6 +12,3 @@
 - [Configuration Schema](configuration-schema.md)
 
 - [Component Reference](component-reference.md)
-
-- [CLI](cli.md)
-- [API Reference](api-reference.md)
