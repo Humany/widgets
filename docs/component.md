@@ -2,7 +2,7 @@
 The Component API provides functions for modifying the properties on components as well as reacting to actions.
 
 ## Acessing the API
-Inside a plugin, call the static [`ComponentPlatform.getInstance()`](/modules/core/classes/componentplatform.html#getinstance) by passing in the current `Container` as shown below. It will return a `Promise` that is resolved to the global `ComponentPlatform` instance. 
+Inside a plugin, call the static [`ComponentPlatform.getInstance()`](/modules/@humany/widget-core/classes/componentplatform.html#getinstance) by passing in the current `Container` as shown below. It will return a `Promise` that is resolved to the global `ComponentPlatform` instance. 
 ```js
 import { ComponentPlatform } from '@humany/widget-core';
 

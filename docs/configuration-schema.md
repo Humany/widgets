@@ -1,5 +1,4 @@
 # Configuration Schema
-## Introduction
 This doumentation describes the Configuration Schema for widgets from runtime version 5. For cloud-based widgets the configuration file can be modified in the Admin Portal by editing a widget and expand the "Advanced configuration" section.
 
 In the runtime, the configuration is available on the widget's `Container`:

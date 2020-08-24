@@ -1,0 +1,14 @@
+- @humany/utils
+- @humany/widget-adapters
+- @humany/widget-analytics
+- @humany/widget-callback
+- @humany/widget-components
+- @humany/widget-conversation
+- [@humany/widget-core](/modules/@humany/widget-core)
+- @humany/widget-forms
+- @humany/widget-plugins
+- @humany/widget-routing
+- @humany/widget-services
+- @humany/widget-tracking
+- @humany/widget-types-grid
+- @humany/widget-ui

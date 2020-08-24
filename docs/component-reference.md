@@ -1,5 +1,5 @@
 # Component Reference
-The following document describes all available components.
+The following document describes all components available in the default distribution.
 
 ## BackLink
 **Type:** `back-link`
