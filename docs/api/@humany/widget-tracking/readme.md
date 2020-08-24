@@ -1,4 +1,4 @@
-# `@humany/widget-tracking`
+# Tracking Platform for ACE Knowledge widgets
 The Tracking Platform provides an API for tracking and listening to events and user interactions in Humany widgets. Version 2 of this package supports ACE One Widget available in version 5 of the ACE Knowledge widget framework.
 
 ## Accessing the API
