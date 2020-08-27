@@ -1,10 +1,10 @@
 # Conversation Platform for ACE Knowledge widgets
-The Conversation Platform provides an API for reading and writing to a conversational component inside an ACE Knowledge widget. Version 2 of this package supports ACE One Widget available in version 5 of the ACE Knowledge widget framework.
+The Conversation Platform provides an API for reading and writing to a conversational component inside an ACE Knowledge widget.
 
 ## Accessing the API
 Inside a plugin, access the global instance of `ConversationPlatform` by passing in the current `Container` to the `getInstance()` method. It will return a `Promise` that is resolved to the `ConversationPlatform` instance. On the instance, register a provider and pass in a name and handler by calling the `registerProvider()` function as shown below. 
 
-The handler function will be called once a conversational component for the specified provider is activated in the widget. Use the controller to interact with the conversation.
+The handler function will be called once a conversational component for the specified provider is activated in the widget. Use the provider to interact with the conversation.
 
 ##### Example
 ```ts
@@ -13,7 +13,7 @@ import { ConversationPlatform } from '@humany/widget-conversation';
 const MyPlugin = async (container) => {
   const platform = await ConversationPlatform.getInstance(container);
 
-  platform.registerProvider('ace-chat', (conversation) => {
+  platform.registerProvider('ace-chat', (provider, component) => {
     // start interacting with the conversation here
   });
 };
@@ -28,7 +28,7 @@ Returns a promise of a `Entry` message that can be used to update and/or remove 
 
 ##### Example
 ```ts
-const agent = conversation.createAgent();
+const agent = provider.createAgent();
 const entry = await agent.print('guide', {
   // ...
 });
@@ -49,11 +49,11 @@ Used to render plain text without HTML-formatting.
 ##### Example
 ```ts
 // print user message
-conversation.user.print('text', 'Lorem ipsum');
+provider.user.print('Lorem ipsum');
 
 // print agent message
 const agent = conversation.createAgent();
-agent.print('text', 'Lorem ipsum');
+agent.print('Lorem ipsum');
 ```
 
 #### Guide
@@ -68,7 +68,6 @@ Name | Type | Description
 ##### Example
 ```ts
 agent.print(
-  'guide',
   {
     title: 'Customer type',
     body: 'Do you represent a person or company?',
@@ -92,7 +91,6 @@ Name | Type | Description
 ##### Example
 ```ts
 agent.print(
-  'list',
   {
     title: 'Download invoices',
     body: 'Click an invoice below to download a copy.',
@@ -118,11 +116,10 @@ Name | Type | Description
 ##### Example
 ```ts
 agent.print(
-  'form',
   {
     title: 'Log in',
     body: 'Enter your ID to login',
-    key: 'my-login-form',
+    formKey: 'my-login-form',
     form: (builder) => {
       builder
         .createComponent({
@@ -150,9 +147,9 @@ The sender name and avatar of an agent message will default to the name and avat
 
 ##### Example
 ```ts
-const agent = conversation.createAgent({ name: 'Mr. Agent', avatar: 'https://www.site.com/avatar.jpg' });
+const agent = provider.createAgent({ name: 'Mr. Agent', avatar: 'https://www.site.com/avatar.jpg' });
 
-agent.print('list', {
+agent.print({
   title: 'I found the following invoices associated to your account:',
   actions: {
     action1: 'Action 1',
@@ -167,7 +164,7 @@ In many cases you will likely fetch data from an external resource before the co
 
 ##### Sequential example
 ```ts
-const loader = conversation.loader();
+const loader = provider.loader();
 // ...
 loader(); // remove loader
 ```
@@ -179,36 +176,36 @@ conversation.loader(() => {
 });
 ```
 
-## Reacting to actions
-Actions are identified by a key and represented by a data object conatining information about the action. Actions can originate from a custom entry, as descibed in the examples above, or be default actions emitted by the conversational component itself.
+## Reading from the conversation
+The second parameter to your provider handler is a `ComponentNode` instance representing the conversational component. On it you can read the component's properties and react to action emitted by the component.
 
-##### Example
-```ts
-conversation.onAction('user-submit', (data, next) => {
-  console.log('action executed', data);
-  return next();
-});
-```
+### Actions
+The following actions are emitted from the conversational component.
 
 **Important**: For default actions it is important to call `next()` unless you want to completely stop the execution flow for the particular action. Not doing so will stop any succeeding handlers and may unintentionally break functionality.
 
-### Default actions
-The conversational component has the following default actions:
+#### `conversation.user-typing`
+Is emitted when the user´s typing indicator is changed.
 
+|Name|Type|Description|
+|----|----|-----------|
+|`textLength`|`number`|The current text length of the user's message.|
 
-#### `user-submit`
+#### `conversation.user-submit`
 Is emitted when the user submits a message.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `text` | `string` | The raw input text.
+|Name|Type|Description|
+|----|----|-----------|
+|`text`|`string`|The submitted text.|
 
-#### `user-typing`
-Is emitted when the user is typing.
+#### `conversation.form`
+Is emitted when the data of a form is changed.
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `length` | `number` | Current length of the text.
+|Name|Type|Description|
+|----|----|-----------|
+|`data`|`FormData`|The form data.|
+|`formKey`|`string`|The unique key for the form.|
+|`actionKey`|`string`|The key of the form component responsible for the change.|
 
 ## Handling forms
 Forms are handled by the `formValidate` and the `formSubmit` hooks. Each hook take a form `key`, which are specified on each form message, and a handler for said hook. 

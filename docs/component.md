@@ -71,7 +71,7 @@ Use the `extendComponent()` utility to extend a specific component type "from th
 |`handler`|[`ExtendComponentHandler`](#extendcomponenthandler)|Yes||The handler used to extend the component.|
 
 #### `ExtendComponentHandler`
-Handler for extending a component. It will be called whenever a component of the defined type is activated within the widget. The handler will be called with a `ComponentNodeController` as only argument. The `ComponentNodeController` is similar to `ComponentController`, but is tied directly to the underlying `ComponentNode` and provides functions for writing _and_ reading properties and context as well as managing its actions.
+Handler for extending a component. It will be called whenever a component of the defined type is activated within the widget. The handler will be called with a [`ComponentNodeController`](modules/@humany/widget-core/classes/componentnodecontroller.html) as only argument. The `ComponentNodeController` is similar to `ComponentController`, but is tied directly to the underlying [`ComponentNode`](modules/@humany/widget-core/classes/componentnode.html) and provides functions for writing _and_ reading properties and context as well as managing its actions.
 
 ```js
 import { extendComponent } from '@humany/widget-core';
