@@ -32,27 +32,118 @@ The [`Widget`](modules/@humany/widget-core/classes/widget.html) object exposes a
 
 The `invoke()` method accepts two arguments, the `commandName` and `data`. The `data` argument will be delegated to the function on the [`WidgetType`](modules/@humany/widget-core/classes/widgettype.html) with the specified name.
 
-### Example
-The following code activates the widget and then renders it inside the provided DOM element.
-```js
-const widgetDOMElement = document.getElementById('my-widget-container');
-widget.invoke('render', { widgetDOMElement })
-```
 !> To be able to invoke commands on a widget it must first be activated.
 
 ### Available commands for ACE One Widget
 
+### `attach(args: AttachData)`
+Prepares the widget and the DOM for rendering using the provided arguments. If `widgetDOMElement` or `triggerDOMElement` are missing, these will be generated and attached to the body if applicable in regard to the widget's configuration. Provided elements are cached and will be restored to their initial states upon `widget.deactivate()` or `widget.invoke('detach')`.
+
+#### `AttachData`
+|Name|Type|Required|Default|Description|
+|----|----|--------|-------|-----------|
+|`widgetDOMElement`|`DOMElement`|No|`document.createElement('div')`|The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created.|
+|`triggerDOMElement`|`DOMElement`|No|`undefined`|The `DOMElement` to be used as "trigger element" for starting the widget.|
+|`withRenderState`|`InitialRenderState`|No|`undefined`|Shorthand for setting the widget's `RenderState` after attach.|
+|`key`|`string`|No|`uuid`|Optional key to enable multiple view outlets of the same widget.|
+
+
+#### `enum(string) InitialRenderState`
+|Value|Description|
+|----|----|
+|`open`|Triggers command `open()`.|
+|`closed`|Triggers command `close()`.|
+|`hidden`|Triggers command `hide()` and starts the router service.|
+|`storage`|Looks for a previous state on this widget and triggers it if applicable.|
+
+##### Example
+The following triggers the `attach` command for a floating-style widget, prepares the DOM and opens the widget. 
+```js
+  const widgetDOMElement = document.getElementById('my-widget-container');
+  const triggerDOMElement = document.getElementById('my-trigger-element');
+  widget.invoke('attach', { widgetDOMElement, triggerDOMElement, withRenderState: 'open' });
+```
+
+### `detach(key?: string)`
+Detaches the widget and resets the DOM to it's original state. If you provided a `key` in the `attach` command you can use that to only remove that specific view outlet. If `key` is undefined, all view outlets will be detached.
+
+<details>
+<summary>Example: Detach basic</summary>
+
+```js
+  openWidget() {
+    const widgetDOMElement = document.getElementById('my-widget-container');
+    const triggerDOMElement = document.getElementById('my-trigger-element');
+    widget.invoke('attach', { widgetDOMElement, triggerDOMElement, withRenderState: 'open' });
+  }
+
+  removeWidget() {
+    widget.invoke('detach');
+  }
+```
+
+</details>
+<details>
+<summary>Example: Detach with key</summary>
+The following example illustrates how to render the same widget in two different elements, for example in a modal, simultaneously. Using the `key` argument in the `attach` method you can append and remove view outlets as you please.
+
+```js
+
+  async initialize() {
+    const embeddedWidgetDOMElement = document.getElementById('my-widget-container');
+    // we first activate the widget and invoke attach for the main view outlet and opens it
+    await widget.activate();
+    await widget.invoke('attach', {widgetDOMElement: embeddedWidgetDOMElement, withRenderState: 'open'});
+
+  }
+
+  async onModalOpen() {
+    // register new view outlet with a key and open the widget
+    const modalWidgetDOMElement = document.getElementById('my-modal-widget-container');
+    await widget.invoke('attach', {widgetDOMElement: modalWidgetDOMElement, key: 'modal-view'});
+    widget.invoke('open');
+  }
+
+  async onModalClose() {
+    // when the modal is closed we detach this view outlet, but retain the main embedded version.
+    await widget.invoke('detach', 'modal-view');
+  }
+
+```
+
+
+</details>
+
 ### `render(args: RenderData)`
-Renders the widget to the DOM using the specified arguments.
+!> This command is deprecated and replaced with `attach`. At this point the arguments are simply passed on to `attach` but this may be subject to change in the future.
+
+Prepares the widget and the DOM for rendering using the specified arguments.
 
 |Name|Type|Required|Default|Description|
 |----|----|--------|-------|-----------|
 |`widgetDOMElement`|`DOMElement`|No|`document.createElement('div')`|The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created.|
 |`triggerDOMElement`|`DOMElement`|No|`undefined`|The `DOMElement` to be used as "trigger element" for starting the widget.|
-|
+|`open`|`boolean`|No|`false`|If `true` the widget will also trigger the `open` command's procedures.|
 
+
+### `close()`
+Closes the widget and resets the state and router service.
 ### `hide()`
-Hides the widget. The widget will keep its current state but will not be visible to the user.
+Hides the widget. The widget will keep its current state and is available in the DOM, but will not be visible to the user.
+### `open()`
+Opens the widget, making it visible to the user.
+
+!> This will have no effect unless the `render` command has been priorly invoked.
+### `renderState()`
+Retrieve the current render state of the widget.
+
+Resolves: `'closed' | 'open' | 'hidden'`
+##### Example
+```js
+  widget.invoke('renderState').then((result) => {
+    console.log(state);
+  });
+```
 
 ## Configuration
 On the `humany` object, call the `configure()` function to specify a configuration handler. The handler will receive two arguments. The first is a `Configurator` object, which is used to apply configuration commands for an implementation. Configuration commands will by default be applied to all containing widgets. The second argument is the implementation on which the commands will be applied to.

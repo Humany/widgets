@@ -2380,6 +2380,9 @@ img {
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="componentnodecontroller.html#actions" class="tsd-kind-icon">actions</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="componentnodecontroller.html#node" class="tsd-kind-icon">node</a>
+				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="componentnodecontroller.html#context" class="tsd-kind-icon">context</a>
 				</li>
@@ -2456,6 +2459,7 @@ img {
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="componentnodecontroller.html#actions" class="tsd-kind-icon">actions</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="componentnodecontroller.html#node" class="tsd-kind-icon">node</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -2479,7 +2483,7 @@ img {
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Component<wbr>Node<wbr>Controller<span class="tsd-signature-symbol">(</span>platform<span class="tsd-signature-symbol">: </span><a href="componentplatform.html" class="tsd-signature-type">ComponentPlatform</a>, target<span class="tsd-signature-symbol">: </span><a href="componentnode.html" class="tsd-signature-type">ComponentNode</a>, ns<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="componentnodecontroller.html" class="tsd-signature-type">ComponentNodeController</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Component<wbr>Node<wbr>Controller<span class="tsd-signature-symbol">(</span>platform<span class="tsd-signature-symbol">: </span><a href="componentplatform.html" class="tsd-signature-type">ComponentPlatform</a>, node<span class="tsd-signature-symbol">: </span><a href="componentnode.html" class="tsd-signature-type">ComponentNode</a>, ns<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="componentnodecontroller.html" class="tsd-signature-type">ComponentNodeController</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
@@ -2491,10 +2495,10 @@ img {
 								<h5>platform: <a href="componentplatform.html" class="tsd-signature-type">ComponentPlatform</a></h5>
 							</li>
 							<li>
-								<h5>target: <a href="componentnode.html" class="tsd-signature-type">ComponentNode</a></h5>
+								<h5>node: <a href="componentnode.html" class="tsd-signature-type">ComponentNode</a></h5>
 							</li>
 							<li>
-								<h5>ns: <span class="tsd-signature-type">string</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> ns: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="componentnodecontroller.html" class="tsd-signature-type">ComponentNodeController</a></h4>
@@ -2508,6 +2512,13 @@ img {
 				<a name="actions" class="tsd-anchor"></a>
 				<h3>actions</h3>
 				<div class="tsd-signature tsd-kind-icon">actions<span class="tsd-signature-symbol">:</span> <a href="actionscontroller.html" class="tsd-signature-type">ActionsController</a></div>
+				<aside class="tsd-sources">
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="node" class="tsd-anchor"></a>
+				<h3>node</h3>
+				<div class="tsd-signature tsd-kind-icon">node<span class="tsd-signature-symbol">:</span> <a href="componentnode.html" class="tsd-signature-type">ComponentNode</a></div>
 				<aside class="tsd-sources">
 				</aside>
 			</section>
@@ -2572,7 +2583,7 @@ img {
 				<a name="properties" class="tsd-anchor"></a>
 				<h3>properties</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-					<li class="tsd-signature tsd-kind-icon">properties&lt;T&gt;<span class="tsd-signature-symbol">(</span>updated<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					<li class="tsd-signature tsd-kind-icon">properties&lt;T&gt;<span class="tsd-signature-symbol">(</span>updated<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
@@ -2587,7 +2598,7 @@ img {
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> updated: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h5>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> updated: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">)</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
@@ -2644,7 +2655,7 @@ img {
 				<a name="writeproperties" class="tsd-anchor"></a>
 				<h3>write<wbr>Properties</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">write<wbr>Properties<span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">?: </span><a href="../globals.html#changesetoptions" class="tsd-signature-type">ChangesetOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<li class="tsd-signature tsd-kind-icon">write<wbr>Properties<span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span>, options<span class="tsd-signature-symbol">?: </span><a href="../globals.html#changesetoptions" class="tsd-signature-type">ChangesetOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
@@ -2653,7 +2664,7 @@ img {
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>properties: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<h5>properties: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ComponentNodeProperties</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span></h5>
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../globals.html#changesetoptions" class="tsd-signature-type">ChangesetOptions</a></h5>

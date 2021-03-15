@@ -220,7 +220,7 @@ Displays a list of guide categories as a drop down list.
 #### Properties
 |Name|Type|Required|Default|Description|
 |----|----|--------|-------------|-----------|
-|`matchCurrentSearchPhrase`|`Boolean`|No|`false`|Whether or not the component should be reactive to the search phrase parameter of the current route data.|
+|`matchFilters`|`GuideCategoryDropdownMatchFilters`|No||Optional match filters when fetching categories.|
 |`rootCategoryHeader`|`String`|No|`undefined`|Display name of the root category.|
 |`route`|`String`|No|`'search'`|Target route name when generating guide links.|
 |`categoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for categories.|
@@ -229,6 +229,12 @@ Displays a list of guide categories as a drop down list.
 
 #### Actions
 _Not available_
+
+#### `GuideCategoryDropdownMatchFilters`
+|Name|Type|Required|Default|Description|
+|----|----|--------|-------------|-----------|
+|`search`|`Boolean`|No|`false`|Whether or not the search phrase should be included when fetching categories.|
+|`tag`|`Boolean`|No|`false`|Whether or not the current tags should be included when fetching categories.|
 
 ## GuideCategoryList
 **Type:** `guide-category-list`
@@ -239,7 +245,7 @@ Displays a list of guide categories.
 #### Properties
 |Name|Type|Required|Default|Description|
 |----|----|--------|-------------|-----------|
-|`matchCurrentSearchPhrase`|`Boolean`|No|`false`|Whether or not the component should be reactive to the search phrase parameter of the current route data.|
+|`matchFilters`|`GuideCategoryListMatchFilters`|No||Optional match filters when fetching categories.|
 |`route`|`String`|No|`'search'`|Target route name when generating guide links.|
 |`columns`|`Number`|No|`null`|Number of columns each item should be repeated.|
 |`badgeSize`|`'large'`\|`'small'`|No|`'large`|Size of category badges.|
@@ -250,6 +256,11 @@ Displays a list of guide categories.
 
 #### Actions
 _Not available_
+
+#### `GuideCategoryListMatchFilters`
+|Name|Type|Required|Default|Description|
+|----|----|--------|-------------|-----------|
+|`search`|`Boolean`|No|`false`|Whether or not the search phrase should be included when fetching categories.|
 
 ## GuideCategoryTree
 **Type:** `guide-category-tree`
@@ -280,9 +291,7 @@ Displays a list of guide links.
 |`categoryLinkLabel`|`String`|No|`undefined`|Label for link to show more guides.|
 |`fetchGuidesLabel`|`String`|No|`undefined`|Label for link to fetch more guides.|
 |`routes`|`GuideListRoutes`|No|See `GuideListRoutes`|Route names for generating links.|
-|`matchCurrentGuideCategory`|`Boolean`|No|`false`|Whether or not the component should be reactive to the guide category parameter of the current route data|
-|`matchCurrentSearchPhrase`|`Boolean`|No|`false`|Whether or not the component should be reactive to the search phrase parameter of the current route data|
-|`matchCurrentTag`|`Boolean`|No|`false`|Whether or not the component should be reactive to the tag parameter of the current route data|
+|`matchFilters`|`GuideListMatchFilters`|No||Optional match filters when fetching categories.|
 |`allowPaging`|`Boolean`|No|`false`|Whether ot not the list should allow paging.|
 |`pageSize`|`Number`|No|`5`|Number of guides to fetch per page.|
 |`searchResultsLabel`|`String`|No|`''`||
@@ -297,6 +306,13 @@ Displays a list of guide links.
 
 #### Actions
 _Not available_
+
+#### `GuideListMatchFilters`
+|Name|Type|Required|Default|Description|
+|----|----|--------|-------------|-----------|
+|`guideCategory`|`Boolean`|No|`false`|Whether or not the current guide category should be included when fetching guides.|
+|`search`|`Boolean`|No|`false`|Whether or not the search phrase should be included when fetching guides.|
+|`tag`|`Boolean`|No|`false`|Whether or not the current tags should be included when fetching guides.|
 
 #### `GuideListRoutes`
 |Name|Type|Required|Default|Description|

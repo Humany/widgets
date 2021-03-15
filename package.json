@@ -4,9 +4,13 @@
   "repository": "https://github.com/Humany/widgets.git",
   "private": true,
   "scripts": {
-    "import-docs": "node scripts/import-docs.js"
+    "import-docs": "node scripts/import-docs.js",
+    "serve-docs": "./node_modules/.bin/docsify serve docs"
   },
   "devDependencies": {
     "ncp": "^2.0.0"
+  },
+  "dependencies": {
+    "docsify-cli": "^4.4.3"
   }
 }
