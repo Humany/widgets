@@ -64,11 +64,11 @@ guides.actions.watch('feedback', (input, next, component) => {
 ## Extending components
 Use the `extendComponent()` utility to extend a specific component type "from the inside." Pass the `Container` as the first argument and the type of the component to extend as the second. The third argument is a handler function that will be called once for every active component of the specified type.
 
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`container`|`Container`|Yes||The `Container` instance for the current widget.|
-|`type`|`String`|Yes||The component type to extend.|
-|`handler`|[`ExtendComponentHandler`](#extendcomponenthandler)|Yes||The handler used to extend the component.|
+| Name        | Type                                                | Required | Default | Description                                      |
+| ----------- | --------------------------------------------------- | -------- | ------- | ------------------------------------------------ |
+| `container` | `Container`                                         | Yes      |         | The `Container` instance for the current widget. |
+| `handler`   | [`ExtendComponentHandler`](#extendcomponenthandler) | Yes      |         | The handler used to extend the component.        |
+| `type`      | `String`                                            | Yes      |         | The component type to extend.                    |
 
 #### `ExtendComponentHandler`
 Handler for extending a component. It will be called whenever a component of the defined type is activated within the widget. The handler will be called with a [`ComponentNodeController`](modules/@humany/widget-core/classes/componentnodecontroller.html) as only argument. The `ComponentNodeController` is similar to `ComponentController`, but is tied directly to the underlying [`ComponentNode`](modules/@humany/widget-core/classes/componentnode.html) and provides functions for writing _and_ reading properties and context as well as managing its actions.

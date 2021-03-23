@@ -40,21 +40,21 @@ The `invoke()` method accepts two arguments, the `commandName` and `data`. The `
 Prepares the widget and the DOM for rendering using the provided arguments. If `widgetDOMElement` or `triggerDOMElement` are missing, these will be generated and attached to the body if applicable in regard to the widget's configuration. Provided elements are cached and will be restored to their initial states upon `widget.deactivate()` or `widget.invoke('detach')`.
 
 #### `AttachData`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------|-----------|
-|`widgetDOMElement`|`DOMElement`|No|`document.createElement('div')`|The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created.|
-|`triggerDOMElement`|`DOMElement`|No|`undefined`|The `DOMElement` to be used as "trigger element" for starting the widget.|
-|`withRenderState`|`InitialRenderState`|No|`undefined`|Shorthand for setting the widget's `RenderState` after attach.|
-|`key`|`string`|No|`uuid`|Optional key to enable multiple view outlets of the same widget.|
+| Name                | Type                 | Required | Default                         | Description                                                                                                  |
+| ------------------- | -------------------- | -------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `key`               | `string`             | No       | `uuid`                          | Optional key to enable multiple view outlets of the same widget.                                             |
+| `triggerDOMElement` | `DOMElement`         | No       | `undefined`                     | The `DOMElement` to be used as "trigger element" for starting the widget.                                    |
+| `widgetDOMElement`  | `DOMElement`         | No       | `document.createElement('div')` | The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created. |
+| `withRenderState`   | `InitialRenderState` | No       | `undefined`                     | Shorthand for setting the widget's `RenderState` after attach.                                               |
 
 
 #### `enum(string) InitialRenderState`
-|Value|Description|
-|----|----|
-|`open`|Triggers command `open()`.|
-|`closed`|Triggers command `close()`.|
-|`hidden`|Triggers command `hide()` and starts the router service.|
-|`storage`|Looks for a previous state on this widget and triggers it if applicable.|
+| Value     | Description                                                              |
+| --------- | ------------------------------------------------------------------------ |
+| `closed`  | Triggers command `close()`.                                              |
+| `hidden`  | Triggers command `hide()` and starts the router service.                 |
+| `open`    | Triggers command `open()`.                                               |
+| `storage` | Looks for a previous state on this widget and triggers it if applicable. |
 
 ##### Example
 The following triggers the `attach` command for a floating-style widget, prepares the DOM and opens the widget. 
@@ -119,11 +119,11 @@ The following example illustrates how to render the same widget in two different
 
 Prepares the widget and the DOM for rendering using the specified arguments.
 
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------|-----------|
-|`widgetDOMElement`|`DOMElement`|No|`document.createElement('div')`|The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created.|
-|`triggerDOMElement`|`DOMElement`|No|`undefined`|The `DOMElement` to be used as "trigger element" for starting the widget.|
-|`open`|`boolean`|No|`false`|If `true` the widget will also trigger the `open` command's procedures.|
+| Name                | Type         | Required | Default                         | Description                                                                                                  |
+| ------------------- | ------------ | -------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `open`              | `boolean`    | No       | `false`                         | If `true` the widget will also trigger the `open` command's procedures.                                      |
+| `triggerDOMElement` | `DOMElement` | No       | `undefined`                     | The `DOMElement` to be used as "trigger element" for starting the widget.                                    |
+| `widgetDOMElement`  | `DOMElement` | No       | `document.createElement('div')` | The `DOMElement` which the widget should be rendered inside. If not specified a new `DOMElement` is created. |
 
 
 ### `close()`

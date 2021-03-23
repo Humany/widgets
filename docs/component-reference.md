@@ -2,521 +2,896 @@
 The following document describes all components available in the default distribution.
 
 ## BackLink
-**Type:** `back-link`
-**Plugin:** `BackLinkComponent` (`@humany/widget-components`)
-
 Displays a link which when clicked navigates one step back on the widget's router.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`label`|`String`|No|`''`|The text to be displayed.|
+| Type        | Plugin              | Package                     |
+| ----------- | ------------------- | --------------------------- |
+| `back-link` | `BackLinkComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name    | Type     | Required | Default | Description               |
+| ------- | -------- | -------- | ------- | ------------------------- |
+| `label` | `string` | No       | `''`    | The text to be displayed. |
 
-|Name|Data|Options|Description|
-|----|----|-------|-----------|
-|`click`|`{}`|_(none)_|Dispatched when the link is clicked.|
+### Generic properties
+_Not available_
+
+### Actions
+
+| Name    | Data | Options  | Description                          |
+| ------- | ---- | -------- | ------------------------------------ |
+| `click` | `{}` | _(none)_ | Dispatched when the link is clicked. |
 
 ## Breadcrumbs
-**Type:** `breadcrumbs`
-**Plugin:** `BreadcrumbsComponent` (`@humany/widget-components`)
-
 Displays breadcrumbs based on a static hierarchy. Be aware this component is opiniated regarding the hierarchy of the routes, and may not support custom routing configurations.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`routes`|`BreadcrumbRoutes`|No|See `BreadcrumbRoutes`|Map of routes to be used by the component.|
-|`guideCategoryRootLabel`|`String`|No|`''`|Label for the root category.|
-|`mode`|`'list'\|'compact'`|No|`'list'`|Rendering mode of the component.|
-|`tagLabel`|`String`|No|`''`|Label to be used when indicating selected tags in the trail. Supports replace for `{{tag}}`.|
-|`phraseLabel`|`String`|No|`''`|Label to be used when indicating the current search phrase in the trail. Supports replace for `{{phrase}}`.|
+| Type          | Plugin                 | Package                     |
+| ------------- | ---------------------- | --------------------------- |
+| `breadcrumbs` | `BreadcrumbsComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name                     | Type                                               | Required | Default                                                                                       | Description                                                                                                 |
+| ------------------------ | -------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `guideCategoryRootLabel` | `string`                                           | No       | `''`                                                                                          | Label for the root category.                                                                                |
+| `mode`                   | `'list' \| 'compact'`                              | No       | `'list'`                                                                                      | Rendering mode of the component.                                                                            |
+| `phraseLabel`            | `string`                                           | No       | `''`                                                                                          | Label to be used when indicating the current search phrase in the trail. Supports replace for `{{phrase}}`. |
+| `routes`                 | [`Partial<RoutingProperties>`](#routingproperties) | No       | `{ initial: 'index', search: 'search', guideCategory: 'browse', contactCategory: 'contact' }` | Map of routes to be used by the component.                                                                  |
+| `tagLabel`               | `string`                                           | No       | `''`                                                                                          | Label to be used when indicating selected tags in the trail. Supports replace for `{{tag}}`.                |
+| `truncationThreshold`    | `number`                                           | No       | `30`                                                                                          | How many characters should be displayed in each breadcrumb item before truncating said item.                |
+
+### Generic properties
 _Not available_
 
-#### `BreadcrumbRoutes`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`initial`|`String`|No|`index`|What route to be treated as the initial when rendering the component.|
-|`search`|`String`|No|`search`|Target route for search.|
-|`guideCategory`|`String`|No|`browse`|Target route for categories.|
-|`contactCategory`|`String`|No|`contact`|Target route for contact methods.|
+### Actions
+_Not available_
 
 ## CloseButton
-**Type:** `close-button`
-**Plugin:** `CloseButtonComponent` (`@humany/widget-components`)
-
 Displays a close button which when clicked dispatches an action.
 
-#### Properties
+| Type           | Plugin                 | Package                     |
+| -------------- | ---------------------- | --------------------------- |
+| `close-button` | `CloseButtonComponent` | `@humany/widget-components` |
+
+### Properties
+| Name        | Type     | Required | Default     | Description                                            |
+| ----------- | -------- | -------- | ----------- | ------------------------------------------------------ |
+| `ariaLabel` | `string` | No       | `undefined` | Label applied to the buttons arialabel HTML attribute. |
+
+### Generic properties
 _Not available_
 
-#### Actions
+### Actions
 
-|Name|Data|Options|Description|
-|----|----|-------|-----------|
-|`close`|`{}`|`CloseButtonActionData`|Dispatched when the button is clicked.|
-
+| Name    | Data | Options                                           | Description                            |
+| ------- | ---- | ------------------------------------------------- | -------------------------------------- |
+| `close` | `{}` | [`CloseButtonActionData`](#closebuttonactiondata) | Dispatched when the button is clicked. |
 
 ##### `CloseButtonActionData`
-|Name|Type|Description|
-|----|----|-----------|
-|`preventDefault`|`Boolean`|Whether or not the default close behaviour should be prevented.|
+| Name             | Type      | Description                                                     |
+| ---------------- | --------- | --------------------------------------------------------------- |
+| `preventDefault` | `boolean` | Whether or not the default close behaviour should be prevented. |
 
 ## ContactLink
-**Type:** `contact-link`
-**Plugin:** `ContactLinkComponent` (`@humany/widget-components`)
-
 Displays a link which can be targeted to a specific route name or other widget within the same implementation.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`widget`|`String`|Yes (if `route` is undefined)|`undefined`|Name of widget the link should target. This value is used if `route` is undefined.|
-|`route`|`String`|No|`undefined`|Name of route the link should target.|
-|`mode`|`'large'`\|`'compact'`|No|`'large'`|The rendering mode of the link.|
-|`iconSize`|`'large'`\|`'small'`|No|`'large'`|The size of the icon.|
-|`symbol`|`Symbol`|`No`|`undefined`|A symbol to be displayed for the link.|
-| `descriptionLabel`|`String`|No|`undefined`|A description text to be displayed for the link.|
-|`label`|`String`|No|`''`|The text to be displayed for the link.|
-|`textAlign`|`'center'`\|`'right'`|No|`'center'` if `mode==='large'`, `'right'` if `mode==='compact'`.|The text align for the link.|
+| Type           | Plugin                 | Package                     |
+| -------------- | ---------------------- | --------------------------- |
+| `contact-link` | `ContactLinkComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name               | Type                     | Required                      | Default                                                          | Description                                                                        |
+| ------------------ | ------------------------ | ----------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `descriptionLabel` | `string`                 | No                            | `undefined`                                                      | A description text to be displayed for the link.                                   |
+| `iconSize`         | `'large'` \| `'small'`   | No                            | `'large'`                                                        | The size of the icon.                                                              |
+| `label`            | `string`                 | No                            | `''`                                                             | The text to be displayed for the link.                                             |
+| `mode`             | `'large'` \| `'compact'` | No                            | `'large'`                                                        | The rendering mode of the link.                                                    |
+| `route`            | `string`                 | No                            | `undefined`                                                      | Name of route the link should target.                                              |
+| `symbol`           | [`Symbol`](#symbol)      | `No`                          | `undefined`                                                      | A symbol to be displayed for the link.                                             |
+| `textAlign`        | `'center'` \| `'right'`  | No                            | `'center'` if `mode==='large'`, `'right'` if `mode==='compact'`. | The text align for the link.                                                       |
+| `widget`           | `string`                 | Yes (if `route` is undefined) | `undefined`                                                      | Name of widget the link should target. This value is used if `route` is undefined. |
+
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## ContactList
-**Type:** `contact-list`
-**Plugin:** `ContactListComponent` (`@humany/widget-components`)
-
 Displays a list of contact methods, with an optional deflection guide list.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`deflectionHeader`|`String`|No|`undefined`|Header text for deflection list.|
-|`deflection`|`{ [contactCategoryId: string]: string[] }`|No|`{}`|Map between contact method categories and guide categories to fetch data for.|
-|`deflectionPageSize`|`Number`|No|`5`|Maximun number of guides to fetch per category.|
-|`routes`|`ContactListRoutes`|No|See `ContactListRoutes`|Map of routes to be used by the component.|
+| Type           | Plugin                 | Package                     |
+| -------------- | ---------------------- | --------------------------- |
+| `contact-list` | `ContactListComponent` | `@humany/widget-components` |
 
 
-#### Actions
+### Properties
+| Name                  | Type                                               | Required | Default                          | Description                                                                              |
+| --------------------- | -------------------------------------------------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------- |
+| `deflectionAccordion` | `boolean`                                          | No       | `false`                          | Whether the guides displayed in the deflection guide list should expand below the guide. |
+| `deflectionHeader`    | `string`                                           | No       | `undefined`                      | Header text for deflection list.                                                         |
+| `deflectionPageSize`  | `number`                                           | No       | `5`                              | Maximun number of guides to fetch per category.                                          |
+| `deflection`          | `{ [contactCategoryId: string]: string[] }`        | No       | `{}`                             | Map between contact method categories and guide categories to fetch data for.            |
+| `routes`              | [`Partial<RoutingProperties>`](#routingproperties) | No       | `{ contactCategory: 'contact' }` | Map of routes to be used by the component.                                               |
+
+### Generic properties
+| Name                                |
+| ----------------------------------- |
+| [`FormProperties`](#formproperties) |
+
+### Actions
 _Not available_
 
-#### `ContactListRoutes`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`contactCategory`|`String`|No|`contact`|Target route for contact methods.|
-
 ## ContactMethod
-**Type:** `contact-method`
-**Plugin:** `ContactMethodComponent` (`@humany/widget-components`)
-
 Displays a contact method.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`id`|`String`|Yes||ID of contact method to display. The contact method must be part of the current projection.|
-|`multilineForm`|`Boolean`|No|`true`|Whether the form, if present, should render some components on separate lines or not.|
-|`fileUploadHeader`|`String`|No|`undefined`|Header text for file upload components in the form.|
-|`fileSizeErrorLabel`|`String`|No|`'Attached file exceeds maximum file size.'`|Error text to display if an attached file exceeds the maximum.|
-|`submitButtonLabel`|`String`|No|`'Submit'`|Text for submit button on form.|
-|`validationHeader`|`String`|No|`undefined`|Header text for validation summary.|
+| Type             | Plugin                   | Package                     |
+| ---------------- | ------------------------ | --------------------------- |
+| `contact-method` | `ContactMethodComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name        | Type      | Required | Default     | Description                                                                                         |
+| ----------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| `autoFocus` | `boolean` | No       | `false`     | Whether a contact method form, if present, should grab focus when rendered or not.                  |
+| `id`        | `string`  | No       | `undefined` | Id of contact method to fetch initially. The contact method must be part of the current projection. |
+
+### Generic properties
+| Name                                |
+| ----------------------------------- |
+| [`FormProperties`](#formproperties) |
+
+### Actions
 _Not available_
 
 ## Conversation
-**Type:** `conversation`
-**Plugin:** `ConversationComponent` (`@humany/widget-conversation`)
-
 Displays a conversational component.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`providers`|`String[]`|No|`[]`|List of provider keys for the component.|
-|`loading`|`Boolean`|No|`false`|Whether the conversation is currently loading data or not.|
-|`inputPlaceholder`|`String`|No|`undefined`|The placeholder text of the input element.|
-|`inputHidden`|`Boolean`|No|`false`|Whether the input element should be hidden or not.|
-|`inputDisabled`|`Boolean`|No|`false`|Whether the input element should be disabled or not.|
-|`userLabel`|`String`|No|`''`|Name of the use in the conversation.|
-|`avatarSize`|`String`\|`Number`|No|`32px`|Size, as CSS `width` property, of the agent's avatar.
+| Type           | Plugin                  | Package                       |
+| -------------- | ----------------------- | ----------------------------- |
+| `conversation` | `ConversationComponent` | `@humany/widget-conversation` |
 
-#### Actions
+### Properties
+| Name               | Type                 | Required | Default               | Description                                                                      |
+| ------------------ | -------------------- | -------- | --------------------- | -------------------------------------------------------------------------------- |
+| `avatarSize`       | `string` \| `number` | No       | `32px`                | Size, as CSS `width` property, of the agent's avatar.                            |
+| `inputDisabled`    | `boolean`            | No       | `false`               | Whether the input element should be disabled or not.                             |
+| `inputHidden`      | `boolean`            | No       | `false`               | Whether the input element should be hidden or not.                               |
+| `inputMultiline`   | `boolean`            | No       | `false`               | Whether the input element should wrap content and render multiple lines of text. |
+| `inputPlaceholder` | `string`             | No       | `'Type your message'` | The placeholder text of the input element.                                       |
+| `loading`          | `boolean`            | No       | `false`               | Whether the conversation is currently loading data or not.                       |
+| `providers`        | `string[]`           | No       | `[]`                  | List of provider keys for the component.                                         |
+| `sendButtonLabel`  | `string`             | No       | `'Send message'`      | Tooltip shown when hovering the send button.                                     |
+| `userLabel`        | `string`             | No       | `''`                  | Name of the use in the conversation.                                             |
 
-|Name|Data|Options|Description|
-|----|----|-------|-----------|
-|`user-submit`|`{ text: String }`|_(none)_|Dispatched when the user submits a text.|
-|`user-typing`|`{ textLength: Number }`|_(none)_|Dispatched when the user is typing.|
-|`form`|`FormActionData`|_(none)_|Dispatched when a form is submitted.|
-|`action`|`{ actionKey: String }`|_(none)_|Dispatched when an inner action of a conversational message is dispatched.|
+### Generic properties
+_Not available_
 
-##### `FormActionData`
-|Name|Type|Description|
-|----|----|-----------|
-|`data`|`FormData`|An object representing a form. See `@humany/widget-forms` for more information.|
-|`actionKey`|`String`|The action key triggering the action. normally `'submit'`.|
-|`formKey`|`String`|The unique key for the form.|
+### Actions
+
+| Name          | Data                     | Options  | Description                                                                |
+| ------------- | ------------------------ | -------- | -------------------------------------------------------------------------- |
+| `action`      | `{ actionKey: string }`  | _(none)_ | Dispatched when an inner action of a conversational message is dispatched. |
+| `form`        | `FormActionData`         | _(none)_ | Dispatched when a form is submitted.                                       |
+| `user-submit` | `{ text: string }`       | _(none)_ | Dispatched when the user submits a text.                                   |
+| `user-typing` | `{ textLength: Number }` | _(none)_ | Dispatched when the user is typing.                                        |
+
+#### `FormActionData`
+| Name        | Type       | Description                                                                     |
+| ----------- | ---------- | ------------------------------------------------------------------------------- |
+| `actionKey` | `string`   | The action key triggering the action. normally `'submit'`.                      |
+| `data`      | `FormData` | An object representing a form. See `@humany/widget-forms` for more information. |
+| `formKey`   | `string`   | The unique key for the form.                                                    |
+
+
+## ConversationReturnButton
+Displays a return button when a conversation is ongoing and the user is not on the conversation route.
+
+| Type                         | Plugin                              | Package                       |
+| ---------------------------- | ----------------------------------- | ----------------------------- |
+| `conversation-return-button` | `ConversationReturnButtonComponent` | `@humany/widget-conversation` |
+
+### Properties
+| Name     | Type                                                              | Required | Default     | Description                                                      |
+| -------- | ----------------------------------------------------------------- | -------- | ----------- | ---------------------------------------------------------------- |
+| `active` | `string`                                                          | No       | `false`     | Controls whether the component is rendered or not.               |
+| `alert`  | [`ConversationReturnButtonAlert`](#conversationreturnbuttonalert) | No       | `undefined` | Renders a symbol that animates when a message has been received. |
+| `label`  | `string`                                                          | No       | `undefined` | The buttons label.                                               |
+| `mode`   | [`ConversationReturnButtonMode`](#conversationreturnbuttonmode)   | No       | `'flat'`    | Controls the buttons visual representation and effects.          |
+
+#### `ConversationReturnButtonAlert`
+| Name     | Type                | Required | Default     | Description                         |
+| -------- | ------------------- | -------- | ----------- | ----------------------------------- |
+| `label`  | `string`            | No       | `undefined` | Tooltip. Uses html-title attribute. |
+| `show`   | `boolean`           | No       | `false`     | Whether symbol is shown or not.     |
+| `symbol` | [`Symbol`](#symbol) | No       | `undefined` | Symbol definition.                  |
+
+#### `ConversationReturnButtonMode`
+| Name              | Value              | Description                                                                  |
+| ----------------- | ------------------ | ---------------------------------------------------------------------------- |
+| Flashing          | `flashing`         | Button background-color will flash between context primary and accent color. |
+| Flashing gradient | `flashingGradient` | Button uses a gradient between primary and accent colors that scrolls.       |
+| Flat              | `flat`             | No animated effect. Button will use primary color as background-color.       |
+
+### Generic properties
+_Not available_
+
+### Actions
+| Name     | Data | Options  | Description                                                                                                |
+| -------- | ---- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| `toggle` | `{}` | _(none)_ | Dispatched when the user clicks the button. Navigates to the view which contains a conversation component. |
 
 ## Copyright
-**Type:** `copyright`
-**Plugin:** `CopyrightComponent` (`@humany/widget-components`)
-
 Displays a copyright sign.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`mode`|`'compact'`\|`'large'`|No|`'compact'`|A copyright sign.|
+| Type        | Plugin               | Package                     |
+| ----------- | -------------------- | --------------------------- |
+| `copyright` | `CopyrightComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name   | Type                     | Required | Default     | Description                      |
+| ------ | ------------------------ | -------- | ----------- | -------------------------------- |
+| `mode` | `'compact'` \| `'large'` | No       | `'compact'` | Generic sizing of the component. |
+
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## EmbeddedWidget
-**Type:** `embedded-widget`
-**Plugin:** `EmbeddedWidgetComponent` (`@humany/widget-components`)
-
 Displays an embedded inline widget.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`widget`|`String`|Yes||Name of widget to render. The widget must be in the same implementation.|
+| Type              | Plugin                    | Package                     |
+| ----------------- | ------------------------- | --------------------------- |
+| `embedded-widget` | `EmbeddedWidgetComponent` | `@humany/widget-components` |
+
+### Properties
+| Name     | Type     | Required | Default | Description                                                              |
+| -------- | -------- | -------- | ------- | ------------------------------------------------------------------------ |
+| `widget` | `string` | Yes      |         | Name of widget to render. The widget must be in the same implementation. |
 
 ## GuideCategoryBrowser
-**Type:** `guide-category-browser`
-**Plugin:** `GuideCategoryBrowserComponent` (`@humany/widget-components`)
-
 Displays a category browser for a list of categories, rendered as a grid.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`guideListHeader`|`String`|No|`undefined`|The text used for the header of most the common questions box.|
-|`guideListCategoryHeader`|`String`|No|`''`|The text used for the header of most the common questions box, for a particular category.|
-|`fetchGuidesLabel`|`String`|No|`undefined`|The text used for the link to fetch more guides.|
-|`categoryLinkLabel`|`String`|No|`undefined`|The text used for link to display more guides in subcategory.|
-|`pageSize `|`String`|No|`10`|Number of guides to fetch when paginating.|
-|`columns`|`Number`|No|`null`|Number of columns each item should be repeated.|
-|`routes`|`GuideCategoryBrowser`|No|See `GuideCategoryBrowserRoutes`|Route map used for generating links.|
+| Type                     | Plugin                          | Package                     |
+| ------------------------ | ------------------------------- | --------------------------- |
+| `guide-category-browser` | `GuideCategoryBrowserComponent` | `@humany/widget-components` |
 
-#### `GuideCategoryBrowser`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`guide`|`String`|No|`guide`|Route used to generate links when navigating to a guide.|
+### Properties
+| Name                      | Type                                               | Required | Default              | Description                                                                               |
+| ------------------------- | -------------------------------------------------- | -------- | -------------------- | ----------------------------------------------------------------------------------------- |
+| `categoryLinkLabel`       | `string`                                           | No       | `undefined`          | The text used for link to display more guides in subcategory.                             |
+| `columns`                 | `number`                                           | No       | `null`               | Number of columns each item should be repeated.                                           |
+| `fetchGuidesLabel`        | `string`                                           | No       | `undefined`          | The text used for the link to fetch more guides.                                          |
+| `guideListCategoryHeader` | `string`                                           | No       | `''`                 | The text used for the header of most the common questions box, for a particular category. |
+| `guideListHeader`         | `string`                                           | No       | `undefined`          | The text used for the header of most the common questions box.                            |
+| `pageSize`                | `string`                                           | No       | `10`                 | Number of guides to fetch when paginating.                                                |
+| `routes`                  | [`Partial<RoutingProperties>`](#routingproperties) | No       | `{ guide: 'guide' }` | Map of routes to be used by the component.                                                |
 
-#### Actions
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## GuideCategoryDropdown
-**Type:** `guide-category-dropdown`
-**Plugin:** `GuideCategoryDropdownComponent` (`@humany/widget-components`)
-
 Displays a list of guide categories as a drop down list.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`matchFilters`|`GuideCategoryDropdownMatchFilters`|No||Optional match filters when fetching categories.|
-|`rootCategoryHeader`|`String`|No|`undefined`|Display name of the root category.|
-|`route`|`String`|No|`'search'`|Target route name when generating guide links.|
-|`categoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for categories.|
-|`activeCategoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for selected categories.|
-|`showMatchCount`|`Boolean`|No|`false`|Whether or not amount of guides in a given category should be shown.|
+| Type                      | Plugin                           | Package                     |
+| ------------------------- | -------------------------------- | --------------------------- |
+| `guide-category-dropdown` | `GuideCategoryDropdownComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name                      | Type                                                       | Required | Default                         | Description                                                                                                                               |
+| ------------------------- | ---------------------------------------------------------- | -------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeCategoryAriaLabel` | `string`                                                   | No       | `''`                            | The `aria-label` attribute for selected categories.                                                                                       |
+| `categoryAriaLabel`       | `string`                                                   | No       | `''`                            | The `aria-label` attribute for categories.                                                                                                |
+| `fallbackOnInitialRoute`  | `boolean`                                                  | No       | `false`                         | Whether or not to fallback on the widgets initial route when deselecting the current category without any other route parameters present. |
+| `matchFilters`            | [`Partial<MatchFilterProperties>`](#matchfilterproperties) | No       | `{ search: false, tag: false }` | Optional match filters when fetching categories.                                                                                          |
+| `rootCategoryHeader`      | `string`                                                   | No       | `undefined`                     | Display name of the root category.                                                                                                        |
+| `route`                   | `string`                                                   | No       | `'search'`                      | Target route name when generating guide links.                                                                                            |
+| `showMatchCount`          | `boolean`                                                  | No       | `false`                         | Whether or not amount of guides in a given category should be shown.                                                                      |
+
+### Generic properties
 _Not available_
 
-#### `GuideCategoryDropdownMatchFilters`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`search`|`Boolean`|No|`false`|Whether or not the search phrase should be included when fetching categories.|
-|`tag`|`Boolean`|No|`false`|Whether or not the current tags should be included when fetching categories.|
+### Actions
+_Not available_
 
 ## GuideCategoryList
-**Type:** `guide-category-list`
-**Plugin:** `GuideCategoryListComponent` (`@humany/widget-components`)
-
 Displays a list of guide categories.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`matchFilters`|`GuideCategoryListMatchFilters`|No||Optional match filters when fetching categories.|
-|`route`|`String`|No|`'search'`|Target route name when generating guide links.|
-|`columns`|`Number`|No|`null`|Number of columns each item should be repeated.|
-|`badgeSize`|`'large'`\|`'small'`|No|`'large`|Size of category badges.|
-|`showDescriptions`|`Boolean`|No|`true`|Whether category descriptions should be rendered or not.|
-|`direction`|`'vertical'`\|`'horizontal'`|No|`'vertical'`|The rendering mode of the list.|
-|`categoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for categories.|
-|`activeCategoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for selected categories.|
+| Type                  | Plugin                       | Package                     |
+| --------------------- | ---------------------------- | --------------------------- |
+| `guide-category-list` | `GuideCategoryListComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name                      | Type                                                       | Required | Default             | Description                                                                                                                               |
+| ------------------------- | ---------------------------------------------------------- | -------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeCategoryAriaLabel` | `string`                                                   | No       | `''`                | The `aria-label` attribute for selected categories.                                                                                       |
+| `badgeSize`               | `'large'` \| `'small'`                                     | No       | `'large`            | Size of category badges.                                                                                                                  |
+| `categoryAriaLabel`       | `string`                                                   | No       | `''`                | The `aria-label` attribute for categories.                                                                                                |
+| `columns`                 | `number`                                                   | No       | `null`              | Number of columns each item should be repeated.                                                                                           |
+| `direction`               | `'vertical'` \| `'horizontal'`                             | No       | `'vertical'`        | The rendering mode of the list.                                                                                                           |
+| `fallbackOnInitialRoute`  | `boolean`                                                  | No       | `false`             | Whether or not to fallback on the widgets initial route when deselecting the current category without any other route parameters present. |
+| `matchFilters`            | [`Partial<MatchFilterProperties>`](#matchfilterproperties) | No       | `{ search: false }` | Optional match filters when fetching categories.                                                                                          |
+| `route`                   | `string`                                                   | No       | `'search'`          | Target route name when generating guide links.                                                                                            |
+| `showDescriptions`        | `boolean`                                                  | No       | `true`              | Whether category descriptions should be rendered or not. Not supported when `badgeSize: 'compact'`.                                       |
+
+### Generic properties
 _Not available_
 
-#### `GuideCategoryListMatchFilters`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`search`|`Boolean`|No|`false`|Whether or not the search phrase should be included when fetching categories.|
+### Actions
+_Not available_
 
 ## GuideCategoryTree
-**Type:** `guide-category-tree`
-**Plugin:** `GuideCategoryTreeComponent` (`@humany/widget-components`)
-
 Displays a nested hierarchical list of guide categories.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`rootCategoryHeader`|`String`|No|`undefined`|Display name of the root category.|
-|`route`|`String`|No|`'search'`|Target route name when generating guide links.|
-|`categoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for categories.|
-|`activeCategoryAriaLabel`|`String`|No|`''`|The `aria-label` attribute for selected categories.|
+| Type                  | Plugin                       | Package                     |
+| --------------------- | ---------------------------- | --------------------------- |
+| `guide-category-tree` | `GuideCategoryTreeComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name                      | Type      | Required | Default     | Description                                                                                                                               |
+| ------------------------- | --------- | -------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeCategoryAriaLabel` | `string`  | No       | `''`        | The `aria-label` attribute for selected categories.                                                                                       |
+| `categoryAriaLabel`       | `string`  | No       | `''`        | The `aria-label` attribute for categories.                                                                                                |
+| `fallbackOnInitialRoute`  | `boolean` | No       | `false`     | Whether or not to fallback on the widgets initial route when deselecting the current category without any other route parameters present. |
+| `rootCategoryHeader`      | `string`  | No       | `undefined` | Display name of the root category.                                                                                                        |
+| `route`                   | `string`  | No       | `'search'`  | Target route name when generating guide links.                                                                                            |
+| `showMatchCount`          | `boolean` | No       | `true`      | Whether to show the category match count or not.                                                                                          |
+
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## GuideList
-**Type:** `guide-list`
-**Plugin:** `GuideListComponent` (`@humany/widget-components`)
-
 Displays a list of guide links.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`categoryLinkLabel`|`String`|No|`undefined`|Label for link to show more guides.|
-|`fetchGuidesLabel`|`String`|No|`undefined`|Label for link to fetch more guides.|
-|`routes`|`GuideListRoutes`|No|See `GuideListRoutes`|Route names for generating links.|
-|`matchFilters`|`GuideListMatchFilters`|No||Optional match filters when fetching categories.|
-|`allowPaging`|`Boolean`|No|`false`|Whether ot not the list should allow paging.|
-|`pageSize`|`Number`|No|`5`|Number of guides to fetch per page.|
-|`searchResultsLabel`|`String`|No|`''`||
-|`searchResultsEmptyLabel`|`String`|No|`''`||
-|`categoryFallbackHeader`|`String`|No|`''`||
-|`rootLabel`|`String`|No|`''`||
-|`categoryRootLabel`|`String`|No|`''`||
-|`forPhraseLabel`|`String`|No|`''`||
-|`noMatchesLabel`|`String`|No|`''`||
-|`inCategoryLabel`|`String`|No|`''`||
-|`withTagLabel`|`String`|No|`''`||
+| Type         | Plugin               | Package                     |
+| ------------ | -------------------- | --------------------------- |
+| `guide-list` | `GuideListComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name                      | Type                                                       | Required | Default                                                | Description                                                                                        |
+| ------------------------- | ---------------------------------------------------------- | -------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `accordion`               | `boolean`                                                  | No       | `false`                                                | Whether or not guides should expand below each guide when clicked.                                 |
+| `allowPaging`             | `boolean`                                                  | No       | `false`                                                | Whether ot not the list should allow paging.                                                       |
+| `alphabeticAscending`     | `string`                                                   | No       | `undefined`                                            | Label for sorting by alphabetic ascending.                                                         |
+| `alphabeticDescending`    | `string`                                                   | No       | `undefined`                                            | Label for sorting by alphabetic descending.                                                        |
+| `categoryFallbackHeader`  | `string`                                                   | No       | `undefined`                                            | Label for the category fallback header, used when generating header.                               |
+| `categoryLinkLabel`       | `string`                                                   | No       | `undefined`                                            | Label for link to show more guides.                                                                |
+| `categoryRootLabel`       | `string`                                                   | No       | `undefined`                                            | Label for the root category.                                                                       |
+| `columns`                 | `number` \| `null`                                         | No       | `null`                                                 | How many columns the guide list should be split into.                                              |
+| `fetchGuidesLabel`        | `string`                                                   | No       | `undefined`                                            | Label for link to fetch more guides.                                                               |
+| `forPhraseLabel`          | `string`                                                   | No       | `undefined`                                            | Label for "for {{searchPhrase}}", used when generating header.                                     |
+| `inCategoryLabel`         | `string`                                                   | No       | `undefined`                                            | Label for "in {{guideCategory}}", used when generating header.                                     |
+| `localPaging`             | `boolean`                                                  | No       | `false`                                                | Whether or not the paging should use a local variable instead of using the `take` route parameter. |
+| `matchFilters`            | [`Partial<MatchFilterProperties>`](#matchfilterproperties) | No       | `{ search: false, tag: false, guideCategory: false }`  | Optional match filters when fetching guides.                                                       |
+| `modifiedAscending`       | `string`                                                   | No       | `undefined`                                            | Label for sorting by last modified ascending.                                                      |
+| `modifiedDescending`      | `string`                                                   | No       | `undefined`                                            | Label for sorting by last modified descending.                                                     |
+| `noMatchesLabel`          | `string`                                                   | No       | `undefined`                                            | Label for "no matches found", used when generating header.                                         |
+| `onlyFavorites`           | `boolean`                                                  | No       | `false`                                                | Whether or not the guide list only should contain favorited guides.                                |
+| `pageSize`                | `number`                                                   | No       | `5`                                                    | Number of guides to fetch per page.                                                                |
+| `popularityDescending`    | `string`                                                   | No       | `undefined`                                            | Label for sorting by most popular descending.                                                      |
+| `publishedAscending`      | `string`                                                   | No       | `undefined`                                            | Label for sorting by published ascending.                                                          |
+| `publishedDescending`     | `string`                                                   | No       | `undefined`                                            | Label for sorting by published descending.                                                         |
+| `rootLabel`               | `string`                                                   | No       | `undefined`                                            | Label for the root, used when generating header.                                                   |
+| `routes`                  | [`Partial<RoutingProperties>`](#routingproperties)         | No       | `{ guide: 'guide', page: 'browse' }`                   | Map of routes to be used by the component.                                                         |
+| `searchResultsEmptyLabel` | `string`                                                   | No       | `undefined`                                            | Label for "no matches found", used when generating header when searching.                          |
+| `searchResultsLabel`      | `string`                                                   | No       | `undefined`                                            | Label for search results, used when generating header when searching.                              |
+| `showFavoriteToggle`      | `boolean`                                                  | No       | `false`                                                | Whether or not the favorite toggle button should be shown.                                         |
+| `sortingHeader`           | `string`                                                   | No       | `undefined`                                            | Header for the sorting picker.                                                                     |
+| `sorting`                 | [`SortingProperties`](#sortingproperties)                  | No       | `{ default: 'popularity-descending', picker: 'none' }` | Configuration for sorting the guide list.                                                          |
+| `tags`                    | `boolean`                                                  | No       | `boolean`                                              | Whether or not tags should be shown on each guide.                                                 |
+| `withTagLabel`            | `string`                                                   | No       | `undefined`                                            | Label for "with {{tag}}", used when generating header.                                             |
+
+### Generic properties
+| Name                                        |
+| ------------------------------------------- |
+| [`FavoriteProperties`](#favoriteproperties) |
+| [`MetaDataProperties`](#metadataproperties) |
+
+### Actions
 _Not available_
 
-#### `GuideListMatchFilters`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`guideCategory`|`Boolean`|No|`false`|Whether or not the current guide category should be included when fetching guides.|
-|`search`|`Boolean`|No|`false`|Whether or not the search phrase should be included when fetching guides.|
-|`tag`|`Boolean`|No|`false`|Whether or not the current tags should be included when fetching guides.|
+#### `SortingProperties`
+| Name      | Type                                | Description                                                                             |
+| --------- | ----------------------------------- | --------------------------------------------------------------------------------------- |
+| `default` | [`Enum<SortingType>`](#sortingtype) | Default sorting order.                                                                  |
+| `picker`  | [`Enum<PickerType>`](#pickertype)   | Type of picker for the sorting selector. Supports `'dropdown'`, `'drawer'` and `'none'` |
 
-#### `GuideListRoutes`
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`page`|`String`|No|`browse`|Target route for page links.|
-|`guide`|`String`|No|`guide`|Target route for guides.|
+#### `SortingType`
+| Name                  | Value                     | Description                                              |
+| --------------------- | ------------------------- | -------------------------------------------------------- |
+| Alphabetic Ascending  | `'alphabetic-ascending'`  | Sorts the guide list in alphabetic order from A-Z.       |
+| Alphabetic Descending | `'alphabetic-descending'` | Sorts the guide list from alphabetic order from Z-A.     |
+| Modified Ascending    | `'modified-ascending'`    | Sorts the guide list by last modified from old-new.      |
+| Modified Descending   | `'modified-descending'`   | Sorts the guide list by last modified from new-old.      |
+| Popularity Descending | `'popularity-descending'` | Sorts the guide list from most popular to least popular. |
+| Published Ascending   | `'published-ascending'`   | Sorts the guide list by by published from old-new.       |
+| Published Descending  | `'published-descending'`  | Sorts the guide list by published from new-old.          |
 
 ## Guide
-**Type:** `guide`
-**Plugin:** `GuideComponent` (`@humany/widget-components`)
-
 Displays a guide, including feedback, dialogs and related guides.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`feedbackHeader`|`String`|No|`undefined`|Header text for feedback.|
-|`feedbackDirection`|`'horizontal'`\|`'vertical'`|No|`'horizontal'`|Rendering direction of the feedback buttons.|
-|`positiveFeedbackLabel`|`String`|No|`undefined`|Label for positive feedback.|
-|`contactFeedbackLabel`|`String`|No|`undefined`|Label for negative feedback when handover is available.|
-|`negativeFeedbackLabel`|`String`|No|`undefined`|Label for negative feedback when _**NO**_ handover is available.|
-|`showFeedback`|`Boolean`|No|`true`||
-|`showRelatedGuides`|`Boolean`|No|`true`||
-|`contactHeader`|`String`|No|`underfined`|Header for contact list after nagtive feedback.|
-|`multilineForm`|`Boolean`|No|`true`|Whether the form, if present, should render some components on separate lines or not.|
-|`fileUploadHeader`|`String`|No|`undefined`|Header text for file upload components in the form.|
-|`fileSizeErrorLabel`|`String`|No|`'Attached file exceeds maximum file size.'`|Error text to display if an attached file exceeds the maximum.|
-|`submitButtonLabel`|`String`|No|`'Submit'`|Text for submit button on form.|
-|`validationHeader`|`String`|No|`undefined`|Header text for validation summary.|
+| Type    | Plugin           | Package                     |
+| ------- | ---------------- | --------------------------- |
+| `guide` | `GuideComponent` | `@humany/widget-components` |
 
+### Properties
+| Name                        | Type                                          | Required | Default        | Description                                                      |
+| --------------------------- | --------------------------------------------- | -------- | -------------- | ---------------------------------------------------------------- |
+| `contactFeedbackLabel`      | `string`                                      | No       | `undefined`    | Label for negative feedback when handover is available.          |
+| `contactHeader`             | `string`                                      | No       | `underfined`   | Header for contact list after nagtive feedback.                  |
+| `copyActionLabel`           | `string`                                      | No       | `undefined`    | Label for the toolbar copy action button.                        |
+| `defaultAnswerVersionLabel` | `string`                                      | No       | `undefined`    | Label for the default answer version.                            |
+| `feedbackDirection`         | `Enum<string>` (`'horizontal' \| 'vertical'`) | No       | `'horizontal'` | Rendering direction of the feedback buttons.                     |
+| `feedbackHeader`            | `string`                                      | No       | `undefined`    | Header text for feedback.                                        |
+| `feedbackRecognitionLabel`  | `string`                                      | No       | `undefined`    | Label to display when feedback has been given.                   |
+| `negativeFeedbackLabel`     | `string`                                      | No       | `undefined`    | Label for negative feedback when _**NO**_ handover is available. |
+| `positiveFeedbackLabel`     | `string`                                      | No       | `undefined`    | Label for positive feedback.                                     |
+| `printActionLabel`          | `string`                                      | No       | `undefined`    | Label for the toolbar print action button.                       |
+| `showAnswerVersions`        | `boolean`                                     | No       | `false`        | Whether answer versions should be displayed or not.              |
+| `showFeedback`              | `boolean`                                     | No       | `true`         | Whether feedback buttons should be displayed or not.             |
+| `showHeader`                | `boolean`                                     | No       | `false`        | Whether the guide header should be shown or not.                 |
+| `toolbarFunctionsHeader`    | `string`                                      | No       | `undefined`    | Header for the toolbar functions menu.                           |
+| `toolbarFunctionsTooltip`   | `string`                                      | No       | `undefined`    | Tooltip for the toolbar functions menu button.                   |
+| `toolbarLanguageHeader`     | `string`                                      | No       | `undefined`    | Header for the toolbar language menu.                            |
+| `toolbarLanguageTooltip`    | `string`                                      | No       | `undefined`    | Tooltip for the toolbar language menu button.                    |
+| `toolbar`                   | `Toolbar`                                     | No       | `Toolbar`      | Configuration for the guide toolbar.                             |
 
-#### Actions
+#### `Toolbar`
+| Name                 | Type                              | Required | Default  | Description                                                                            |
+| -------------------- | --------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| `allowCopy`          | `boolean`                         | No       | `false`  | Whether the copy action button should be shown or not.                                 |
+| `allowPrint`         | `boolean`                         | No       | `false`  | Whether the print action button should be shown or not.                                |
+| `guideCategories`    | `boolean`                         | No       | `false`  | Whether the guide category information should be shown or not.                         |
+| `language`           | `boolean`                         | No       | `false`  | Whether the language picker should be shown or not.                                    |
+| `picker`             | [`Enum<PickerType>`](#pickertype) | No       | `'none'` | Type of picker for the toolbar actions. Supports `'dropdown'`, `'drawer'` and `'none'` |
+| `showFavoriteToggle` | `boolean`                         | No       | `false`  | Whether the favorite toggle button should be shown or not.                             |
+
+### Generic properties
+| Name                                                  |
+| ----------------------------------------------------- |
+| [`FavoriteProperties`](#favoriteproperties)           |
+| [`FormProperties`](#formproperties)                   |
+| [`LanguageLabelProperties`](#languagelabelproperties) |
+| [`MetaDataProperties`](#metadataproperties)           |
+
+### Actions
 _Not available_
 
 ## Header
-**Type:** `header`
-**Plugin:** `HeaderComponent` (`@humany/widget-components`)
-
 Displays a header text.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`header`|`String`|No|`undefined`|Text to display.|
-|`tooltip`|`String`|No|`undefined`|Tooltip text when hovering header.|
-|`maxHeaderWidth`|`String`\|`Number`|No|`'100%'`|Max width, as CSS length.|
+| Type     | Plugin            | Package                     |
+| -------- | ----------------- | --------------------------- |
+| `header` | `HeaderComponent` | `@humany/widget-components` |
+
+### Properties
+| Name             | Type                 | Required | Default     | Description                        |
+| ---------------- | -------------------- | -------- | ----------- | ---------------------------------- |
+| `header`         | `string`             | No       | `undefined` | Text to display.                   |
+| `maxHeaderWidth` | `string` \| `number` | No       | `'100%'`    | Max width, as CSS length.          |
+| `tooltip`        | `string`             | No       | `undefined` | Tooltip text when hovering header. |
 
 
-#### Actions
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## NotificationList
-**Type:** `notification-list`
-**Plugin:** `NotificationListComponent` (`@humany/widget-components`)
-
 Displays a list of notifications.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`category`|`String`|Yes||Category ID to display notifications from.|
-|`showHeader`|`Boolean`|No|`true`|Whether or not a header should be displayed.|
+| Type                | Plugin                      | Package                     |
+| ------------------- | --------------------------- | --------------------------- |
+| `notification-list` | `NotificationListComponent` | `@humany/widget-components` |
+
+### Properties
+| Name         | Type      | Required | Default | Description                                  |
+| ------------ | --------- | -------- | ------- | -------------------------------------------- |
+| `category`   | `string`  | Yes      |         | Category ID to display notifications from.   |
+| `showHeader` | `boolean` | No       | `true`  | Whether or not a header should be displayed. |
 
 
-#### Actions
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## NotificationRow
-**Type:** `notification-row`
-**Plugin:** `NotificationRowComponent` (`@humany/widget-components`)
-
 Displays a notification row.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`types`|`String[]`|No|`[]`|Array of accepted notification types. Possible values: `'top'`, `'middle'` and `'bottom'`.|
-|`allowPaging`|`Boolean`|No|`true`|Whether or not the component should allow to page multiple notifications.|
-|`expandable`|`Boolean`|No|`false`|Whether or not the noticiation body should be able to be expanded.|
-|`pageNextAriaLabel`|`String`|No|`''`|The `aria-label` attribute for the next page button.|
-|`pagePreviousAriaLabel`|`String`|No|`''`|The `aria-label` attribute for the previous page button.|
-|`closeAriaLabel`|`String`|No|`''`|The `aria-label` attribute for the close button.|
-|`expandAriaLabel`|`String`|No|`''`|The `aria-label` attribute for the expand button.|
+| Type               | Plugin                     | Package                     |
+| ------------------ | -------------------------- | --------------------------- |
+| `notification-row` | `NotificationRowComponent` | `@humany/widget-components` |
 
-#### Actions
+### Properties
+| Name                    | Type       | Required | Default | Description                                                                                |
+| ----------------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------ |
+| `allowPaging`           | `boolean`  | No       | `true`  | Whether or not the component should allow to page multiple notifications.                  |
+| `closeAriaLabel`        | `string`   | No       | `''`    | The `aria-label` attribute for the close button.                                           |
+| `expandAriaLabel`       | `string`   | No       | `''`    | The `aria-label` attribute for the expand button.                                          |
+| `expandable`            | `boolean`  | No       | `false` | Whether or not the noticiation body should be able to be expanded.                         |
+| `pageNextAriaLabel`     | `string`   | No       | `''`    | The `aria-label` attribute for the next page button.                                       |
+| `pagePreviousAriaLabel` | `string`   | No       | `''`    | The `aria-label` attribute for the previous page button.                                   |
+| `types`                 | `string[]` | No       | `[]`    | Array of accepted notification types. Possible values: `'top'`, `'middle'` and `'bottom'`. |
+
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## RelatedGuideList
-**Type:** `related-guide-list`
-**Plugin:** `RelatedGuideListComponent` (`@humany/widget-components`)
-
 Displays a list of related guides for a particular guide, resolved by the current route data.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`header`|`String`|No|`undefined`|Header text for the guide list.|
+| Type                 | Plugin                      | Package                     |
+| -------------------- | --------------------------- | --------------------------- |
+| `related-guide-list` | `RelatedGuideListComponent` | `@humany/widget-components` |
 
+### Properties
+| Name                 | Type      | Required | Default     | Description                                                |
+| -------------------- | --------- | -------- | ----------- | ---------------------------------------------------------- |
+| `header`             | `string`  | No       | `undefined` | Header text for the guide list.                            |
+| `showFavoriteToggle` | `boolean` | No       | `false`     | Whether or not the favorite toggle button should be shown. |
+| `tags`               | `boolean` | No       | `boolean`   | Whether or not tags should be shown on each guide.         |
 
-#### Actions
+### Generic properties
+| Name                                        |
+| ------------------------------------------- |
+| [`FavoriteProperties`](#favoriteproperties) |
+| [`MetaDataProperties`](#metadataproperties) |
+
+### Actions
 _Not available_
 
 ## RelatedTagList
-**Type:** `related-tag-list`
-**Plugin:** `RelatedTagListComponent` (`@humany/widget-components`)
-
 Displays a list of related tags for a particular guide, resolved by the current route data.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`header`|`String`|No|`undefined`|Header text for the tag list.|
-|`route`|`String`|No|`'search'`|Route name for generating links.|
+| Type               | Plugin                    | Package                     |
+| ------------------ | ------------------------- | --------------------------- |
+| `related-tag-list` | `RelatedTagListComponent` | `@humany/widget-components` |
+
+### Properties
+| Name     | Type     | Required | Default     | Description                      |
+| -------- | -------- | -------- | ----------- | -------------------------------- |
+| `header` | `string` | No       | `undefined` | Header text for the tag list.    |
+| `route`  | `string` | No       | `'search'`  | Route name for generating links. |
 
 
-#### Actions
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## Search
-**Type:** `search`
-**Plugin:** `SearchComponent` (`@humany/widget-components`)
-
 Displays a search element.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`placeholder`|`String`|No|`undefined`|Placeholder text for the input element.|
-|`searchButtonLabel`|`String`|No|`undefined`|Label for the search button.|
-|`clearButtonLabel`|`String`|No|`undefined`|Label for the reset button.|
-|`showSearchButton`|`Boolean`|No|`false`|Whether or not a search button should be displayed.|
-|`showClearButton`|`Boolean`|No|`false`|Whether or not a reset button should be displayed.|
-|`route`|`String`|No|`'search'`|Route name for generating links.|
-|`role`|`String`|No|`'search'`|The `role` attribute for the input element.|
+| Type     | Plugin            | Package                     |
+| -------- | ----------------- | --------------------------- |
+| `search` | `SearchComponent` | `@humany/widget-components` |
 
+### Properties
+| Name                | Type                                         | Required | Default                                                    | Description                                                                                        |
+| ------------------- | -------------------------------------------- | -------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ariaLabel`         | `string`                                     | No       | `undefined`                                                | Label applied to the input arialabel HTML attribute.                                               |
+| `autoFocus`         | `boolean`                                    | No       | `false`                                                    | Whether or not the search input should focus on render.                                            |
+| `clearButtonLabel`  | `string`                                     | No       | `undefined`                                                | Label for the reset button.                                                                        |
+| `clearButtonLabel`  | `string`                                     | No       | `undefined`                                                | Label for the reset button.                                                                        |
+| `filterBadges`      | [`FilterConfig`](#filterconfig) \| `boolean` | No       | `{ position: 'inside', tag: false, guideCategory: false }` | Whether or not to display the current tag and/or guide category.                                   |
+| `incremental`       | `boolean`                                    | No       | `true`                                                     | Whether or not the search should happen incrementally as you type.                                 |
+| `patchParams`       | `boolean`                                    | No       | `false`                                                    | Whether or not the search should keep other route parameters when searching.                       |
+| `placeholder`       | `string`                                     | No       | `undefined`                                                | Placeholder text for the input element.                                                            |
+| `placeholder`       | `string`                                     | No       | `undefined`                                                | Placeholder text for the input element.                                                            |
+| `quickFilters`      | [`FilterConfig`](#filterconfig) \| `boolean` | No       | `{ autoSelect: false, tag: false, guideCategory: false }`  | Whether or not to allow selecting of tag and/or guide category by typing '#' / '@'.                |
+| `role`              | `string`                                     | No       | `'search'`                                                 | The `role` attribute for the input element.                                                        |
+| `role`              | `string`                                     | No       | `'search'`                                                 | The `role` attribute for the input element.                                                        |
+| `route`             | `string`                                     | No       | `'search'`                                                 | Route name for generating links.                                                                   |
+| `route`             | `string`                                     | No       | `'search'`                                                 | Route to navigate to when searching.                                                               |
+| `searchButtonLabel` | `string`                                     | No       | `undefined`                                                | Label for the search button.                                                                       |
+| `searchButtonLabel` | `string`                                     | No       | `undefined`                                                | Label for the search button.                                                                       |
+| `showChildren`      | `boolean`                                    | No       | `false`                                                    | Whether or not children should be rendered. Can only be rendered when clear button is not visible. |
+| `showClearButton`   | `boolean`                                    | No       | `false`                                                    | Whether or not a clear button should be displayed when searching.                                  |
+| `showClearButton`   | `boolean`                                    | No       | `false`                                                    | Whether or not a reset button should be displayed.                                                 |
+| `showSearchButton`  | `boolean`                                    | No       | `false`                                                    | Whether or not a search button should be displayed.                                                |
+| `showSearchButton`  | `boolean`                                    | No       | `false`                                                    | Whether or not a search button should be displayed.                                                |
 
-#### Actions
+### Generic properties
 _Not available_
 
-## TabStop
-**Type:** `tab-stop`
-**Plugin:** `TabStopComponent` (`@humany/widget-components`)
+### Actions
+_Not available_
 
+#### `FilterConfig`
+| Name            | Type                                   | Description                                                                 |
+| --------------- | -------------------------------------- | --------------------------------------------------------------------------- |
+| `autoSelect`    | `boolean`                              | Whether or not the first element should be focused when using quick filter. |
+| `guideCategory` | `boolean`                              | Whether or not guide categories should be shown/supported.                  |
+| `position`      | `Enum<string>` (`'inside' \| 'below'`) | Position of filter badges relative to search field.                         |
+| `tag`           | `boolean`                              | Whether or not tags should be shown/supported.                              |
+
+## TabStop
 Non-visual component that acts as stop anchor when tabbing.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`position`|`'start'`\|`'end'`|No|`undefined`|Position, in relation to its tab siblings, the stop anchor is placed.|
+| Type       | Plugin             | Package                     |
+| ---------- | ------------------ | --------------------------- |
+| `tab-stop` | `TabStopComponent` | `@humany/widget-components` |
+
+### Properties
+| Name       | Type                                | Required | Default     | Description                                                           |
+| ---------- | ----------------------------------- | -------- | ----------- | --------------------------------------------------------------------- |
+| `position` | `Enum<string>` (`'start' \| 'end'`) | No       | `undefined` | Position, in relation to its tab siblings, the stop anchor is placed. |
 
 
-#### Actions
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## TagList
-**Type:** `tag-list`
-**Plugin:** `TagListComponent` (`@humany/widget-components`)
-
 Displays a list of tags.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`header`|`String`|No|`undefined`|Header text for the tag list.|
-|`route`|`String`|No|`search`|Name of route the links should target.|
+| Type       | Plugin             | Package                     |
+| ---------- | ------------------ | --------------------------- |
+| `tag-list` | `TagListComponent` | `@humany/widget-components` |
+
+### Properties
+| Name                     | Type                                 | Required | Default     | Description                                                                                                                          |
+| ------------------------ | ------------------------------------ | -------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `fallbackOnInitialRoute` | `boolean`                            | No       | `false`     | Whether or not to fallback on the widgets initial route when deselecting the current tag without any other route parameters present. |
+| `header`                 | `string`                             | No       | `undefined` | Header text for the tag list.                                                                                                        |
+| `rootTagLabel`           | `string`                             | No       | `undefined` | Label on the root tag.                                                                                                               |
+| `route`                  | `string`                             | No       | `search`    | Name of route the tag links should target.                                                                                           |
+| `showIcons`              | `boolean`                            | No       | `search`    | Whether or not to show icons in tags.                                                                                                |
+| `showMatchCount`         | `boolean`                            | No       | `search`    | Whether or not amount of guides in a given tag should be shown.                                                                      |
+| `static`                 | `boolean`                            | No       | `false`     | Whether or not to use the static tag end point (`true` = `/tags`, `false` = `/tagsonguides`).                                        |
+| `style`                  | `Enum<string>` (`'badge' \| 'pill'`) |          | No          | `'badge'`                                                                                                                            | Generic styling of the tags. |
 
 
-#### Actions
+### Generic properties
+_Not available_
+
+### Actions
 _Not available_
 
 ## WidgetHeader
-**Type:** `widget-header`
-**Plugin:** `WidgetHeaderComponent` (`@humany/widget-components`)
-
 Displays a widget header, with optional back link and close button.
 
-#### Properties
-|Name|Type|Required|Default|Description|
-|----|----|--------|-------------|-----------|
-|`header`|`String`|No|`undefined`|Header text.|
-|`tagLine`|`String`|No|`undefined`|Tagline text.|
-|`tooltip`|`String`|No|`''`|Tooltip text for header.|
-|`actions`|`Object`|No|`{}`|Object map with `ActionNode`s.|
-|`textAlign `|`String`|No|`'center'`|Object map with action keys and display text.|
-|`route `|`String`|No|`undefined`|Target route for generating header link. If not defined, no link will be rendered.|
+| Type            | Plugin                  | Package                     |
+| --------------- | ----------------------- | --------------------------- |
+| `widget-header` | `WidgetHeaderComponent` | `@humany/widget-components` |
+
+### Properties
+| Name        | Type                                          | Required | Default     | Description                                                                        |
+| ----------- | --------------------------------------------- | -------- | ----------- | ---------------------------------------------------------------------------------- |
+| `actions`   | [`{ [key:string]: ActionNode }`](#actionnode) | No       | `{}`        | Object map with `ActionNode`s.                                                     |
+| `header`    | `string`                                      | No       | `undefined` | Header text.                                                                       |
+| `route`     | `string`                                      | No       | `undefined` | Target route for generating header link. If not defined, no link will be rendered. |
+| `tagLine`   | `string`                                      | No       | `undefined` | Tagline text.                                                                      |
+| `textAlign` | `string`                                      | No       | `'center'`  | Object map with action keys and display text.                                      |
+| `tooltip`   | `string`                                      | No       | `''`        | Tooltip text for header.                                                           |
 
 ##### `ActionNode`
-|Name|Type|Description|
-|----|----|-----------|
-|`type`|`String`|Type of action.|
-|`label`|`String`|Label for the action.|
-|`position`|`Enum<String>` (`'right'\|'left'`)|Position of the action button.|
-|`symbol`|`Symbol`|Symbol for the action button.|
-|`size`|`String` \| `Number`|Size, as CSS property, for the button.|
-|`padding`|`String` \| `Number`|Padding, as CSS property, for the button.|
+| Name       | Type                                 | Description                               |
+| ---------- | ------------------------------------ | ----------------------------------------- |
+| `label`    | `string`                             | Label for the action.                     |
+| `padding`  | `string` \| `number`                 | Padding, as CSS property, for the button. |
+| `position` | `Enum<string>` (`'right' \| 'left'`) | Position of the action button.            |
+| `size`     | `string` \| `number`                 | Size, as CSS property, for the button.    |
+| `symbol`   | [`Symbol`](#symbol)                  | Symbol for the action button.             |
+| `type`     | `string`                             | Type of action.                           |
 
 
-#### Actions
-|Name|Data|Options|Description|
-|----|----|-------|-----------|
-|`close`|`{}`|`WidgetHeaderCloseActionData`|Dispatched when the `'close'` action button is clicked.|
-|`back`|`{}`|_(none)_|Dispatched when the `'back'` action button is clicked.|
+### Generic properties
+_Not available_
+
+### Actions
+| Name    | Data | Options                                                       | Description                                             |
+| ------- | ---- | ------------------------------------------------------------- | ------------------------------------------------------- |
+| `back`  | `{}` | _(none)_                                                      | Dispatched when the `'back'` action button is clicked.  |
+| `close` | `{}` | [`WidgetHeaderCloseActionData`](#widgetheadercloseactiondata) | Dispatched when the `'close'` action button is clicked. |
 
 ##### `WidgetHeaderCloseActionData`
-|Name|Type|Description|
-|----|----|-----------|
-|`preventDefault`|`Boolean`|Whether or not the default close behaviour should be prevented.|
+| Name             | Type      | Description                                                     |
+| ---------------- | --------- | --------------------------------------------------------------- |
+| `preventDefault` | `boolean` | Whether or not the default close behaviour should be prevented. |
+
+## Area
+Renders a grid based area containing children.
+
+| Type   | Plugin          | Package                     |
+| ------ | --------------- | --------------------------- |
+| `area` | `AreaComponent` | `@humany/widget-components` |
+
+### Properties
+| Name         | Type                                                  | Required | Default     | Description                                                                                                  |
+| ------------ | ----------------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------------------------------------------ |
+| `animation`  | `string`                                              | No       | `undefined` | Animation when rendering.                                                                                    | ; |
+| `columns`    | `number`                                              | No       | `1`         | Amount of grid columns.                                                                                      | ; |
+| `fullScreen` | `boolean`                                             | No       | `false`     | Used if `mode` is set to `'drawer'`. Whether the drawer should take up the entire screen or just part of it. | ; |
+| `header`     | `string`                                              | No       | `undefined` | Used if `mode` is set to `'drawer'`. Header displayed at the top of the drawer.                              | ; |
+| `mode`       | `Enum<string>` (`'static' \| 'drawer' \| 'dropdown'`) | No       | `'static'`  | Rendering mode.                                                                                              | ; |
+| `scrollable` | `boolean`                                             | No       | `false`     | Whether or not the area should be scrollable.                                                                | ; |
+| `trigger`    | [`Trigger`](#trigger)                                 | No       | `undefined` | Used if `mode` is set to `'drawer'` or `'dropdown'`. Settings for button to trigger area.                    | ; |
+
+##### `Trigger`
+| Name     | Type                | Description                               |
+| -------- | ------------------- | ----------------------------------------- |
+| `label`  | `string`            | A label to be displayed for the trigger.  |
+| `size`   | `number`            | Size for the symbol, if defined.          |
+| `symbol` | [`Symbol`](#symbol) | A symbol to be displayed for the trigger. |
+
+
+### Generic properties
+_Not available_
+
+### Actions
+_Not available_
+
+## ImageLink
+Displays an image with support for navigation.
+
+| Type         | Plugin               | Package                     |
+| ------------ | -------------------- | --------------------------- |
+| `image-link` | `ImageLinkComponent` | `@humany/widget-components` |
+
+### Properties
+| Name        | Type     | Required | Default     | Description                                                                      |
+| ----------- | -------- | -------- | ----------- | -------------------------------------------------------------------------------- |
+| `ariaLabel` | `string` | No       | `undefined` | Label applied to the link arialabel HTML attribute and image alt HTML attribute. |
+| `image`     | `string` | No       | `undefined` | Image to display. Used as src on a `<img/>`-element.                             |
+| `route`     | `string` | No       | `undefined` | Route to navigate to on click.                                                   |
+
+
+### Generic properties
+_Not available_
+
+### Actions
+_Not available_
+
+## Settings
+Displays settings for the widget.
+
+| Type       | Plugin              | Package                     |
+| ---------- | ------------------- | --------------------------- |
+| `settings` | `SettingsComponent` | `@humany/widget-components` |
+
+### Properties
+| Name                   | Type      | Required | Default     | Description                                                |
+| ---------------------- | --------- | -------- | ----------- | ---------------------------------------------------------- |
+| `allowLanguages`       | `boolean` | No       | `false`     | Whether or not to allow swapping between widget languages. |
+| `languagePickerHeader` | `string`  | No       | `undefined` | Header for the language list.                              |
+
+### Generic properties
+_Not available_
+
+### Actions
+_Not available_
+
+# Generic Component Property Types
+
+## FormProperties
+
+Properties which configure how forms behave within a component.
+
+| Name                       | Type      | Description                                                              |
+| -------------------------- | --------- | ------------------------------------------------------------------------ |
+| `fileSizeErrorLabel`       | `string`  | Error label for when trying to upload a file of incorrect size.          |
+| `fileUploadHeader`         | `string`  | Header for file uploading form component.                                |
+| `multilineForm`            | `boolean` | Whether the form should render some components on separate lines or not. |
+| `requiredDescriptionLabel` | `string`  | Label describing required fields.                                        |
+| `submitButtonLabel`        | `string`  | Label for form submit button.                                            |
+| `validationHeader`         | `string`  | Header for the validation summary.                                       |
+
+## MetaDataProperties
+
+Properties which configure rendering of guide metadata within a component.
+
+| Name                     | Type                    | Description                                     |
+| ------------------------ | ----------------------- | ----------------------------------------------- |
+| `metadataByLabel`        | `string`                | Label to be used as prefix for editor.          |
+| `metadataModifiedLabel`  | `string`                | Label to describe when guide was last modified. |
+| `metadataPublishedLabel` | `string`                | Label to describe when guide was published.     |
+| `metadata`               | [`Metadata`](#metadata) | Configuration object for what to display.       |
+
+### Metadata
+| Name            | Type                                                             | Description                                                   |
+| --------------- | ---------------------------------------------------------------- | ------------------------------------------------------------- |
+| `format`        | `Enum<string>` (`'hh:mm' \| 'yyyy-mm-dd' \| 'yyyy-mm-dd hh:mm'`) | Formatting for dates.                                         |
+| `modifiedBy`    | `string`                                                         | Whether or not to display which editor last modified a guide. |
+| `publishedBy`   | `string`                                                         | Whether or not to display which editor published a guide.     |
+| `showModified`  | `boolean`                                                        | Whether or not to display when guide was last modified.       |
+| `showPublished` | `boolean`                                                        | Whether or not to display when guide was published.           |
+
+## RoutingProperties
+
+Properties which configure routing of a component.
+
+| Name              | Type     | Description                                     |
+| ----------------- | -------- | ----------------------------------------------- |
+| `contactCategory` | `string` | Route used for contact category links.          |
+| `guideCategory`   | `string` | Route used for guide category links.            |
+| `guide`           | `string` | Route used for guide links.                     |
+| `index`           | `string` | Route used for links pointing to index route.   |
+| `initial`         | `string` | Route used for links pointing to initial route. |
+| `page`            | `string` | Route used when paging a list.                  |
+| `search`          | `string` | Route used when searching.                      |
+
+## MatchFilterProperties
+
+Properties which configure which match filters should be applied on the content of a component.
+
+| Name            | Type      | Description                                                         |
+| --------------- | --------- | ------------------------------------------------------------------- |
+| `guideCategory` | `boolean` | Whether or not the current guide category should be used as filter. |
+| `search`        | `boolean` | Whether or not the current search phrase should be used as filter.  |
+| `tag`           | `boolean` | Whether or not the current tag should be used as filter.            |
+
+## FavoriteProperties
+
+Properties which configure texts used for toggling favorite status on guides.
+
+| Name                         | Type     | Description                                                        |
+| ---------------------------- | -------- | ------------------------------------------------------------------ |
+| `addFavoriteTooltip`         | `string` | Tooltip when hovering over button to add guide as favorite.        |
+| `removeFavoriteCancelLabel`  | `string` | Label for cancel button when confirming guide favorite removal.    |
+| `removeFavoriteConfirmLabel` | `string` | Label for confirm button when confirming guide favorite removal.   |
+| `removeFavoriteHeader`       | `string` | Header for modal when confirming guide favorite removal.           |
+| `removeFavoriteLabel`        | `string` | Label for modal when confirming guide favorite removal.            |
+| `removeFavoriteTooltip`      | `string` | Tooltip when hovering over button to remove the guide as favorite. |
+
+## LanguageLabelProperties
+
+Properties which configure texts used for different languages.
+
+| Name              | Type     | Description                |
+| ----------------- | -------- | -------------------------- |
+| `daLanguageLabel` | `string` | Danish language label.     |
+| `deLanguageLabel` | `string` | German language label.     |
+| `elLanguageLabel` | `string` | Greek language label.      |
+| `enLanguageLabel` | `string` | English language label.    |
+| `esLanguageLabel` | `string` | Spanish language label.    |
+| `fiLanguageLabel` | `string` | Finnish language label.    |
+| `frLanguageLabel` | `string` | French language label.     |
+| `isLanguageLabel` | `string` | Icelandic language label.  |
+| `itLanguageLabel` | `string` | Italian language label.    |
+| `ltLanguageLabel` | `string` | Lithuanian language label. |
+| `lvLanguageLabel` | `string` | Latvian language label.    |
+| `nlLanguageLabel` | `string` | Dutch language label.      |
+| `nnLanguageLabel` | `string` | Norwegian language label.  |
+| `plLanguageLabel` | `string` | Polish language label.     |
+| `ptLanguageLabel` | `string` | Portuguese language label. |
+| `ruLanguageLabel` | `string` | Russian language label.    |
+| `svLanguageLabel` | `string` | Swedish language label.    |
+
+## PickerType
+
+Enum containing different types of pickers.
+
+| Name     | Value        | Description                                           |
+| -------- | ------------ | ----------------------------------------------------- |
+| Drawer   | `'drawer'`   | Displays a drawer, animating into the view.           |
+| Dropdown | `'dropdown'` | Displays a dropdown beneath the picker toggle button. |
+| Modal    | `'modal'`    | Displays an overlay with a modal.                     |
+| None     | `'none'`     | Does not display the picker.                          |
+
+## Symbol
+
+Configuration for a given symbol.
+
+Supported SVG-symbols:  `'search'`, `'clear'`, `'close'`, `'back'`, `'alert'`, `'send'`, `'chat'`, `'agent'`, `'minimize'`, `'sorting'`, `'copy'`, `'print'`, `'language'`, `'information'`, `'options'`, `'caret-right'`, `'caret-left'`, `'caret-up'`, `'caret-down'`, `'chat-new'`, `'star-empty'`, `'star-filled'`, `'cog-wheel'`.
+
+Font Awesome Version: 4.7.
+
+| Name      | Type                                               | Description                                |
+| --------- | -------------------------------------------------- | ------------------------------------------ |
+| `content` | `string`                                           | Symbol content.                            |
+| `type`    | `Enum<string>` (`'Uri' \| 'Svg' \| 'FontAwesome'`) | Type of symbol. Supported Svg-symbols are: |
