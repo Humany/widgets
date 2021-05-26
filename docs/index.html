@@ -8,7 +8,22 @@
   <meta name="description" content="Description">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="./theme-custom.css">
+  <link rel="stylesheet" href="./theme-simple-dark.css">
+  <link rel="icon" href="data:image/png;base64,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
+  gAAAABJRU5ErkJggg==">
 </head>
 
 <body>
@@ -25,9 +40,43 @@
       ],
       maxLevel: 4,
       subMaxLevel: 2,
+      themeColor: '#990AE3',
+      markdown: {
+        renderer: {
+          code: (code, infostring, escaped) => {
+            const hljs = window.hljs;
+            const lang = hljs.getLanguage(infostring) ? infostring : 'plaintext';
+            const out = hljs.highlight(code, { language: lang }).value;
+              if (out != null && out !== code) {
+                escaped = true;
+                code = out;
+              }
+
+            code = code.replace(/\n$/, '') + '\n';
+
+            if (!lang) {
+              return '<pre><code>'
+                + (escaped ? code : escape(code, true))
+                + '</code></pre>\n';
+            }
+
+            return '<pre v-pre="" data-lang="' + lang + '"><code class="'
+              + ('lang-'+lang)
+              + escape(lang, true)
+              + '">'
+              + (escaped ? code : escape(code, true))
+              + '</code></pre>\n';
+                  }
+
+        }
+      }
     }
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/a11y-dark.min.css" integrity="sha512-1rzCaYWsg3l6uKvGbUT6rAZFOcVn0zeXAFlZudsnj8k2xcrU5asL8jfJUEijV9GPYMh0GnPToeCTJj6RXQnA8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/diff.min.js" integrity="sha512-DsFHR5hUlRpLaYp1hvrwIrbM4v8oOCZRf11cYWHSsI1NKxz55BhLgD+O7nnzQTiyaMBGdbT4Ut1QWfM/nzzyQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 </body>
 
 </html>
+

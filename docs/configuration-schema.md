@@ -1,15 +1,19 @@
 # Configuration Schema
+
 This doumentation describes the Configuration Schema for widgets from runtime version 5. For cloud-based widgets the configuration file can be modified in the Admin Portal by editing a widget and expand the "Advanced configuration" section.
 
 In the runtime, the configuration is available on the widget's `Container`:
+
 ```js
 widget.container.get('$settings');
 ```
 
 ## `breakpoints`
+
 Defines available breakpoints in the widget. A breakpoint is referenced by its key and is used to apply overrides for components (see [`ComponentReferenceOverride`](#componentreferenceoverride)). The value of a breakpoint must be a valid [CSS Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries).
 
 **Example:**
+
 ```json
 "breakpoints": {
   "desktop": "(min-width: 1025px) and (max-width: 1280px)"
@@ -17,6 +21,7 @@ Defines available breakpoints in the widget. A breakpoint is referenced by its k
 ```
 
 ## `components`
+
 Defines all available components in the widget. An individual component is referenced by its key.
 
 | Name         | Type                                          | Required | Default                                                 | Description                                                                                                                          |
@@ -28,9 +33,11 @@ Defines all available components in the widget. An individual component is refer
 | `type`       | `string`                                      | Yes      |                                                         | The component type as defined by the component implementation.                                                                       |
 
 ### `ComponentProperties`
+
 An object with arbitrary properties for the component.
 
 **Example:**
+
 ```json
 "my-component": {
   "type": "article",
@@ -41,9 +48,11 @@ An object with arbitrary properties for the component.
 ```
 
 ### `ComponentContext`
+
 An object defining the context for the component. It is similar to `ComponentProperties` but its content will cascade down to child components, if available.
 
 ### `ComponentLayout`
+
 An object defining the layout of the component in relation to its parent grid.
 
 | Name     | Type                             | Required | Default       | Description                                                                                         |
@@ -53,23 +62,27 @@ An object defining the layout of the component in relation to its parent grid.
 | `size`   | `Number` \| `"full"` \| `"none"` | No       | `"full"`      | The size, in number of columns, the component should spread. Set to `"none"` to hide the component. |
 
 ### `ComponentReference`
+
 References a component by its key. A referenced component must be defined in the `components` property. Can be defined as a string or array, which also supports overrides.
 
 **Example:**
+
 ```json
 // simple reference
 "my-component"
 ```
+
 ```json
 // complex reference with overrides
 [
-  "my-component", 
-  { 
+  "my-component",
+  {
     "breakpoints": ["tablet"],
     "properties": { "title": "Overridden title for tablet devices" }
   }
 ]
 ```
+
 #### `ComponentReferenceOverride`
 
 | Name          | Type                  | Required | Default                                                 | Description                                                                                                   |
@@ -80,6 +93,7 @@ References a component by its key. A referenced component must be defined in the
 | `properties`  | `ComponentProperties` | No       | `{}`                                                    | Default properties for the component. Properties can also be defined or overridden in a `ComponentReference`. |
 
 ## `data`
+
 Defines the remote endpoint for the Humany projection to get and post data from.
 
 | Name         | Type                        | Required | Default     | Description                                                                                                                                                                  |
@@ -89,6 +103,7 @@ Defines the remote endpoint for the Humany projection to get and post data from.
 | `site`       | `"current"` \| `"referrer"` | No       | `'current'` | Whether the current site value should be resolved from current or referrer page. Will always fallback to `"current"` if the referrer value, for any reason, isn't available. |
 
 **Example:**
+
 ```json
 "data": {
   "projection": "//sandbox.humany.net/widget-name",
@@ -98,14 +113,17 @@ Defines the remote endpoint for the Humany projection to get and post data from.
 ```
 
 ## `entry`
+
 A [`ComponentReference`](#componentreference) pointing to the component definition to use as the entry point of the widget.
 
 **Example:**
+
 ```json
 "entry": "root-area"
 ```
 
 ## `routing`
+
 Defines the routing configuration for the widget.
 
 | Name          | Type                        | Required | Default        | Description                                  |
@@ -114,6 +132,7 @@ Defines the routing configuration for the widget.
 | `mode`        | [`RouterMode`](#routermode) | No       | `"scopedHash"` | The router mode to use.                      |
 
 ### `RouterMode`
+
 An enum of available router modes.
 
 | Name           | Description                                                                                                                                             |
@@ -124,6 +143,7 @@ An enum of available router modes.
 | `"scopedHash"` | Will store the view state in the hash on the browser address bar. The state will be scoped, allowing multiple widgets to use the hash at the same time. |
 
 **Example:**
+
 ```json
 "routing": {
   "initialPath": "/",
@@ -132,6 +152,7 @@ An enum of available router modes.
 ```
 
 ## `trigger`
+
 Defines whether or not the widget should have a manual trigger to activate.
 
 | Type                                         | Required | Default     | Description                                                                                                     |
@@ -139,14 +160,16 @@ Defines whether or not the widget should have a manual trigger to activate.
 | `Boolean` or [`TriggerBadge`](#triggerbadge) | No       | `undefined` | `false` will not render a trigger. `true` will use the source trigger element and activate the widget on click. |
 
 ### `TriggerBadge`
+
 An object defining a trigger badge.
 
-| Name     | Type                | Required | Default     | Description                                        |
-| -------- | ------------------- | -------- | ----------- | -------------------------------------------------- |
-| `label`  | `String`            | No       | `''`        | An optional label to be rendered inside the badge. |
-| `symbol` | [`Symbol`](#symbol) | No       | `undefined` | The symbol to be rendered inside the badge.        |
+| Name     | Type                                                       | Required | Default     | Description                                        |
+| -------- | ---------------------------------------------------------- | -------- | ----------- | -------------------------------------------------- |
+| `label`  | `String`                                                   | No       | `''`        | An optional label to be rendered inside the badge. |
+| `symbol` | [`Symbol`](/component-reference/generic-properties#symbol) | No       | `undefined` | The symbol to be rendered inside the badge.        |
 
 ### `Symbol`
+
 Defines a symbol, either an icon or image.
 
 | Name      | Type     | Required | Default | Description                                                                   |
@@ -155,6 +178,7 @@ Defines a symbol, either an icon or image.
 | `type`    | `String` | Yes      |         | The type of icon to be used. Possible values are `"FontAwesome"` and `"Uri"`. |
 
 ## `views`
+
 Defines available routes in the widget. A route is identified by its key and consists of a route path regular expression along with a [`ComponentReference`](#componentreference) ponting to the component definition for its content.
 
 | Name    | Type                                        | Required | Default | Description                        |
@@ -163,6 +187,7 @@ Defines available routes in the widget. A route is identified by its key and con
 | `path`  | `String` \| `String[]`                      | Yes      |         | A path or array of paths patterns. |
 
 **Example:**
+
 ```json
 "views": {
   "index": {
