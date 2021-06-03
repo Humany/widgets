@@ -14,7 +14,6 @@
 - [Configuration Schema](configuration-schema.md)
 
 - Component Reference
-
   - [Area](component-reference/area.md)
   - [Back Link](component-reference/back-link.md)
   - [Breadcrumbs](component-reference/breadcrumbs.md)
@@ -46,5 +45,5 @@
   - [Generic Properties](component-reference/generic-properties.md)
 
 - Configuration Examples
-  <!-- - [Accordion](configuration-examples/accordion.md) -->
+  - [Accordion Guide List](configuration-examples/accordion.md)
   - [Guide Category List Modes](configuration-examples/guide-category-list.md)

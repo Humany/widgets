@@ -105,7 +105,7 @@ By default the floating template has three different views for browsing (`index`
 
 ### Update route props
 
-```json
+```diff
 {
   "components": {
     "widget-header": {
@@ -168,7 +168,7 @@ By default the floating template has three different views for browsing (`index`
 +     ],
       "entry": "index-area"
     },
--    "browse": {
+-   "browse": {
 -      "path": [
 -        "/browse",
 -        "/browse/c:guideCategory(\\d+)-:uriName"

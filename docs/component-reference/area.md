@@ -20,11 +20,12 @@ Renders a grid based area containing children.
 
 ### `Trigger`
 
-| Name     | Type                                                       | Description                               |
-| -------- | ---------------------------------------------------------- | ----------------------------------------- |
-| `label`  | `string`                                                   | A label to be displayed for the trigger.  |
-| `size`   | `number`                                                   | Size for the symbol, if defined.          |
-| `symbol` | [`Symbol`](/component-reference/generic-properties#symbol) | A symbol to be displayed for the trigger. |
+| Name        | Type                                                       | Description                               |
+| ----------- | ---------------------------------------------------------- | ----------------------------------------- |
+| `ariaLabel` | `string`                                                   | An aria-label for the trigger.            |
+| `label`     | `string`                                                   | A label to be displayed for the trigger.  |
+| `size`      | `number`                                                   | Size for the symbol, if defined.          |
+| `symbol`    | [`Symbol`](/component-reference/generic-properties#symbol) | A symbol to be displayed for the trigger. |
 
 ## Generic properties
 
