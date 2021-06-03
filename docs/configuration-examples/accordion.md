@@ -1,23 +1,58 @@
-# Accordion
-We have three different components that support expanding and rendering children, suggestively a guide component, when clicking a guide link.
+# Accordion guide list
+
+We have three different components that support expanding and rendering guide children. Also known as: accordion guide lists.
 
 These are: [`GuideListComponent`](component-reference.md#guidelist), [`GuideCategoryBrowserComponent`](component-reference.md#guidecategorybrowser) and [`ContactListComponent`](component-reference.md#contactlist).
 
+!> Note that SEO support for widgets with accordion guides is Not currently available.
+
 ## Setup
-This example supposes that your configuration has a couple of things already set up. The following are just examples, your configuration does not have to look exactly like this.
+
+The following is just an example, your configuration does not have to look exactly like this. We'll only show the relevant components in this tutorial.
+
+This is done in the advanced settings in your OneWidget interface.
 
 ### Guide
-The idea with accordion is to displaying a guide by expanding it below a clicked guide link. 
-With that in mind, we need to have a guide component definition looking something like the following.
+
+The first thing you need is a guide:
+
 ```json
 "guide": {
   "type": "guide"
 }
 ```
 
-### GuideList / GuideCategoryBrowser / ContactList
-Finally we are going to need to need  a GuideListComponent, GuideCategoryBrowserComponent and/or a ContactListComponent.
+### Starting configuration
+
+In this scenario we'll assume the widget has an index, browse and contact view. In the index view there's a [`GuideListComponent`], a [`GuideCategoryBrowserComponent`] in the browse view and a [`ContactListComponent`] in the contact view.
+
+These will, by default, be setup something like the following:
+
 ```json
+"index-area": {
+  "type": "area",
+  "children": [
+    "guide-list"
+  ]
+},
+"guide-area": {
+  "type": "area",
+  "children": [
+    "guide"
+  ]
+},
+"browse-area": {
+  "type": "area",
+  "children": [
+    "guide-category-browser"
+  ]
+},
+"contact-area": {
+  "type": "area",
+  "children": [
+    "contact-list"
+  ]
+},
 "guide-list": {
   "type": "guide-list",
   "properties": {
@@ -44,12 +79,7 @@ Finally we are going to need to need  a GuideListComponent, GuideCategoryBrowser
       "guide": "guide"
     }
   }
-}
-```
-
-### Views
-In order for the guide links to be able to get the correct route target we need to have some views setup.
-```json
+},
 "views": {
   "index": {
     "path": "/",
@@ -71,17 +101,18 @@ In order for the guide links to be able to get the correct route target we need 
 ```
 
 ## Configuration
+
 Now we should be ready to configure our accordion.
 
 ### List components _(required)_
-First we need to configure each component type [listed above](#guidelist-guidecategorybrowser-contactlist) to support accordion rendering. You can find documentation for components [here](configuration-schema#views) and each component type [here](component-reference).
+
+First we need to configure each component type to support accordion rendering. (You can find documentation for components [here](configuration-schema#views) and each component type [here](component-reference).)
 
 We do this by:
-1. Setting the `accordion`-property to `true`.  
-The _`deflectionAccordion`-property for `contact-list`_.
+
+1. Setting the `accordion`-property to `true`. The `contact-list` has a a unique parameter called `deflectionAccordion` since presenting guides isn't its main function.
 2. Setting the `routes.guide`-property to whichever route the component is rendered on.  
-_If a `guide-list` is rendered on the search-route the `routes.guide`-property should be set to `"search"`_.  
-_If a `guide-category-browser` is rendered on the browse-route the `routes.guide`-property should be set to `"browse"`_.
+   _If a `guide-category-browser` is rendered on the browse-route the `routes.guide`-property should be set to `"browse"`_.
 3. Adding `guide` as a child to the component.
 
 ```json
@@ -123,7 +154,26 @@ _If a `guide-category-browser` is rendered on the browse-route the `routes.guide
 }
 ```
 
-### Views _(optional)_
+!> If you are using a `guide-category-browser` it is highly encouraged to change the `columns` property to a value of `1` in order to avoid layout issues. Note that depending on which template was used on widget creation you may need to update the [component reference](configuration-schema#componentreference) as well (see example below.)
+
+```diff
+[
+  "guide-category-browser",
+  {
+    "breakpoints": [
+      "tablet",
+      "desktop"
+    ],
+    "properties": {
+-     "columns": null
++     "columns": 1
+    }
+  }
+]
+```
+
+### Configure views for better URLs _(optional)_
+
 If you want your URLs to keep the previous formatting you need to configure this on each view that should support rendering a guide. You can find documentation for views [here](configuration-schema#views).
 
 ```json
@@ -152,10 +202,11 @@ If you want your URLs to keep the previous formatting you need to configure this
 }
 ```
 
-### Guide _(optional)_
-Considering your guide will now be rendered in a different context, which for example might have less space, you might want to change some properties. You can read about the guide components properties [here](component-reference#guide).
+### Displaying guide headers _(optional)_
 
-Since the title of a given guide is already rendered in the parent guide list, you might want to hide the guide components header.
+Your guide will now be rendered in a different context, which might have less space. With this in mind, you might want to change some properties. You can read all about the `guide` components properties [here](component-reference#guide).
+
+The guide header displayed at the top of the guide, for instance, might be something that you want to hide. This can be done with a boolean property, like this:
 
 ```json
 "guide": {
@@ -167,9 +218,10 @@ Since the title of a given guide is already rendered in the parent guide list, y
 ```
 
 ### Related tag list _(optional)_
-If your widget contains tags. The related tag list is usually rendered beside the guide component, in the same area. Considering that we have now moved our guide component we might need to also move your related tag list component.
 
-We can do this by adding a [reference](configuration-schema#componentreference) to our related tag list component as a child to our guide component.
+If your widget contains tags, the `related-tag-list` is usually rendered together with the `guide` component. Now that the `guide` has moved, you might need to also move the tags too.
+
+We can do this by adding a [reference](configuration-schema#componentreference) to our related tag list component as a child to our `guide` component.
 
 ```json
 "guide": {
@@ -182,3 +234,53 @@ We can do this by adding a [reference](configuration-schema#componentreference) 
   "type": "related-tag-list"
 }
 ```
+
+### Setting up a seperate `guide` component for accordion
+
+With all these settings you might want to consider the option of keeping seperate `guide` specifically for the accordion.
+
+Here's an example of that:
+
+```json
+"guide": {
+  "type": "guide",
+  "properties": {
+    "showHeader": true
+  }
+},
+"guide-accordion": {
+  "type": "guide",
+  "properties": {
+    "showHeader": false
+  },
+  "children" [
+    "related-tag-list"
+  ]
+},
+"guide-list": {
+  "type": "guide-list",
+  "properties": {
+    "accordion": true,
+    "routes": {
+      "guide": "index"
+    }
+  },
+  "children": [
+    "guide-accordion"
+  ]
+},
+"index-area": {
+  "type": "area",
+  "children": [
+    "guide-list"
+  ]
+},
+"guide-area": {
+  "type": "area",
+  "children": [
+    "guide"
+  ]
+}
+```
+
+This setup might be preferable if the widget is going to be used for SEO since we're indexing the guide route. It'll also act as a landing page for visitors coming from search engines.

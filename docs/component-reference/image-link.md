@@ -10,7 +10,8 @@ Displays an image with support for navigation.
 
 | Name        | Type     | Required | Default     | Description                                                                      |
 | ----------- | -------- | -------- | ----------- | -------------------------------------------------------------------------------- |
-| `ariaLabel` | `string` | No       | `undefined` | Label applied to the link arialabel HTML attribute and image alt HTML attribute. |
+| `ariaLabel` | `string` | No       | `undefined` | Text used for `aria-label` HTML attribute.                                       |
+| `altLabel`  | `string` | No       | `undefined` | Text used for `alt` HTML attribute for the image.                                |
 | `image`     | `string` | No       | `undefined` | Image to display. Used as src on a `<img/>`-element.                             |
 | `route`     | `string` | No       | `undefined` | Route to navigate to on click.                                                   |
 
