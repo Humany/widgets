@@ -1,5 +1,13 @@
-# Conversation Platform for ACE Knowledge widgets
-The Conversation Platform provides an API for reading and writing to a conversational component inside an ACE Knowledge widget.
+# Widget Conversation API
+The Widget Conversation API provides support for reading and writing to a conversational component inside a widget.
+
+## Explore the API
+
+You can try out and watch the Conversation API in action by clicking the button below.
+Keep in mind that this is for demonstration purposes only and may not be best practice. 
+We do not recommend binding functions to the `Window` object.
+
+[![Edit elegant-jones-rnyrd](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/elegant-jones-rnyrd?fontsize=14&hidenavigation=1&theme=dark)
 
 ## Accessing the API
 Inside a plugin, access the global instance of `ConversationPlatform` by passing in the current `Container` to the `getInstance()` method. It will return a `Promise` that is resolved to the `ConversationPlatform` instance. On the instance, register a provider and pass in a name and handler by calling the `registerProvider()` function as shown below. 
@@ -13,7 +21,7 @@ import { ConversationPlatform } from '@humany/widget-conversation';
 const MyPlugin = async (container) => {
   const platform = await ConversationPlatform.getInstance(container);
 
-  platform.registerProvider('ace-chat', (provider, component) => {
+  platform.registerProvider('my-chat', (conversation, component) => {
     // start interacting with the conversation here
   });
 };
@@ -22,16 +30,14 @@ const MyPlugin = async (container) => {
 ## Writing to the conversation
 When writing content to the conversation you will first need to create an `Agent` object and then use its `print()` function. Specify the type of entry to print and pass in the content.
 
-### `print(type: string, content: object)`
+### `print(content: object)`
 
-Returns a promise of a `Entry` message that can be used to update and/or remove the content from the conversation at a later stage.
+Returns a `ConversationEntry` message that can be used to update and/or remove the content from the conversation at a later stage.
 
 ##### Example
 ```ts
-const agent = provider.createAgent();
-const entry = await agent.print('guide', {
-  // ...
-});
+const agent = conversation.createAgent();
+const entry = agent.print('Lorem ipsum');
 
 entry.update({
   // ...
@@ -40,53 +46,29 @@ entry.update({
 entry.remove();
 ```
 
-### Message types
-Message types `text`, `guide`, `list` and `form` are supported for `Agent`s. For the `User` object, only `text` is supported.
+### Messages
 
-#### Text
+#### Simple text message
 Used to render plain text without HTML-formatting.  
 
 ##### Example
 ```ts
 // print user message
-provider.user.print('Lorem ipsum');
+conversation.user.print('Lorem ipsum');
 
 // print agent message
 const agent = conversation.createAgent();
 agent.print('Lorem ipsum');
 ```
 
-#### Guide
-Used to render a guide message with support for HTML and actions. Is only supported on `Agent`s.
+#### Message with list of actions
+Example of how to render a list with actions. Is only supported on `Agent` and as system message.
 
 Name | Type | Description
 -----|------|------------
-`title`|`string`|Title for the guide.
-`body`|`string`|Body content for the guide. Supports HTML.
-`actions`|`object`|Key-value-pairs representing available actions for the guide.
-
-##### Example
-```ts
-agent.print(
-  {
-    title: 'Customer type',
-    body: 'Do you represent a person or company?',
-    actions: {
-      person: 'Person',
-      company: 'Company',
-    },
-  }
-);
-```
-
-#### List
-Used to render a list with actions. It has the same signature as `Guide`, but will have a different presentation. Is only supported on `Agent`s.
-
-Name | Type | Description
------|------|------------
-`title`|`string`|Title for the guide.
-`body`|`string`|Body content for the guide. Supports HTML.
-`actions`|`object`|Key-value-pairs representing available actions for the guide.
+`title`|`string`|Title for the entry.
+`body`|`string`|Body content for the entry. Supports HTML.
+`actions`|`object`|Key-value-pairs representing available actions for the entry.
 
 ##### Example
 ```ts
@@ -103,51 +85,50 @@ agent.print(
 );
 ```
 
-#### Form
-Used to render a form that can be handled by `conversation.validateForm()` and `conversation.submitForm`. Is only supported on `Agent`s.
+#### Message with a form
+Example of how to render a form that can be handled by the `conversation.form` event. Is only supported on `Agent` and as system message.
 
 Name | Type | Description
 -----|------|------------
-`title`|`string`|Title for the guide.
-`body`|`string`|Body content for the guide. Supports HTML.
+`title`|`string`|Title for the entry.
+`body`|`string`|Body content for the entry. Supports HTML.
 `form`|`(FormBuilder) => void`|A callback function for building the form. Refer to the [`@humany/widget-forms`](https://www.npmjs.com/package/@humany/widget-forms) package for more information about `FormBuilder`.
 `key`|`string`|The key used to refer to the form when validating and submitting the form.
 
 ##### Example
 ```ts
-agent.print(
-  {
-    title: 'Log in',
-    body: 'Enter your ID to login',
-    formKey: 'my-login-form',
-    form: (builder) => {
-      builder
-        .createComponent({
-          component: 'Text',
-          type: 'number',
-          name: 'id',
-          title: 'ID',
-          required: true,
-        })
-        .createComponent({
-          title: 'Log in',
-          name: 'submit',
-          component: 'Submit',
-          type: 'submit',
-          evaluate: true,
-          value: 'Log in',
-        });
-    },
-  }
-);
+agent.print({
+  title: 'Log in',
+  body: 'Enter your ID to login',
+  key: 'my-login-form',
+  form: (builder) => {
+    builder
+      .createComponent({
+        component: 'Text',
+        type: 'number',
+        name: 'id',
+        title: 'ID',
+        required: true,
+      })
+      .createComponent({
+        title: 'Log in',
+        actionKey: 'submit',
+        name: 'submit',
+        component: 'Submit',
+        type: 'submit',
+        evaluate: true,
+        value: 'Log in',
+      });
+  },
+});
 ```
 
 ### Specify a sender name and/or avatar
-The sender name and avatar of an agent message will default to the name and avatar of the bot. To override this, specify a custom name and/or avatar when creating the `Agent` object.
+To create an agent with a name and avatar use the `createAgent` method on the conversation.
 
 ##### Example
 ```ts
-const agent = provider.createAgent({ name: 'Mr. Agent', avatar: 'https://www.site.com/avatar.jpg' });
+const agent = conversation.createAgent({ name: 'Mr. Agent', avatar: 'https://www.site.com/avatar.jpg' });
 
 agent.print({
   title: 'I found the following invoices associated to your account:',
@@ -159,21 +140,33 @@ agent.print({
 });
 ```
 
-### Loading/typing indicator
-In many cases you will likely fetch data from an external resource before the content is written to the conversation. In this case you should use the `loader()` function to inform the user that something is about to happen. Even in cases when the response is available immediately it gives a better user experience to present a loading indicator for a short while.
+### Writing system messages
+In order to print a system message to the conversation you invoke the `print` method on the `conversation`. The `print` method accepts the same arguments as on the `Agent`.
 
-##### Sequential example
+#### Example
 ```ts
-const loader = provider.loader();
-// ...
-loader(); // remove loader
+conversation.print('Lorem ipsum');
 ```
 
-##### Promise example
+### Loading/typing indicator
+In many cases you will likely fetch data from an external resource before the content is written to the conversation. In this case you should use the `loading()` function on the `ConversationProvider` to inform the user that something is about to happen. Even in cases when the response is available immediately it gives a better user experience to present a loading indicator for a short while.
+
+In cases where you want to notify the user that the agent is currently typing, you should use the `typing` function on `Agent`.
+
+
+#### Example
+##### Loading
 ```ts
-conversation.loader(() => {
-  return Promise.resolve(); // remove loader when promise is resolved
-});
+const done = conversation.loading();
+// ...
+done(); // remove loader
+```
+
+##### Typing indicator
+```ts
+const done = agent.typing()
+// ...
+done(); // remove loader
 ```
 
 ## Reading from the conversation
@@ -198,6 +191,13 @@ Is emitted when the user submits a message.
 |----|----|-----------|
 |`text`|`string`|The submitted text.|
 
+#### `conversation.action`
+Is emitted when the user clicks on an action.
+
+|Name|Type|Description|
+|----|----|-----------|
+|`text`|`string`|Key of the submitted action.|
+
 #### `conversation.form`
 Is emitted when the data of a form is changed.
 
@@ -207,45 +207,28 @@ Is emitted when the data of a form is changed.
 |`formKey`|`string`|The unique key for the form.|
 |`actionKey`|`string`|The key of the form component responsible for the change.|
 
-## Handling forms
-Forms are handled by the `formValidate` and the `formSubmit` hooks. Each hook take a form `key`, which are specified on each form message, and a handler for said hook. 
+In order to subscribe to any of these actions you have access to the `ComponentNodeController`. Below is an example how to subscribe to the `conversation.form` action.
 
-### Validating forms
-Form validation is handled by the `validateForm` hook. Will be called before the `submitForm` hook. If `valid` is returned with a `true` value, the `submitForm` hook with the same `key` is called. If `valid` is returned with a `false` value, the submission is canceled and optionally passed `errors` are displayed.
-
-Name | Type | Description
------|------|------------
-`formData`|`object`|Key value pair with each form value.
-`valid`|`boolean`|Whether or not the form is valid.
-`errors`|`object`|Key value pair with form validation errors. 
-
-##### Example
 ```ts
-conversation.validateForm('my-login-form', (formData) => {
-  return MyLib.checkIfFormValid(formData).then((formIsValid) => {
-    if (formIsValid) {
-      return { valid: true };
-    }
-    return { 
-      valid: false, 
-      errors: {
-        name: 'Name is required!',
-      },
-    };
+  component.actions.watch('conversation.form', (input, next) => {
+    return next(input);
   });
-});
 ```
 
+
 ### Submitting forms
-Form submission is handled by the `submitForm` hook by passing the `key` for the form to be handled and a handler.
+In order to listen for form events you should subscribe to the `conversation.form` event. By passing a `key` to the form, you are able to target the form in this listener.
 
-Name | Type | Description
------|------|------------
-`formData`|`object`|Key value pair with each form value.
-
-##### Example
 ```ts
-conversation.submitForm('my-login-form', (formData) => {
-  MyLib.submitForm(formData);
-});
+  component.actions.watch('conversation.form', (input, next) => {
+    if (
+      input.formKey === 'my-login-form' &&
+      input.actionKey === 'submit'
+    ) {
+      const username = input.data.username;
+      const password = input.data.password;
+    }
+
+    return next(input);
+  });
 ```
