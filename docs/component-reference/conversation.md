@@ -24,6 +24,12 @@ Displays a conversational component.
 
 _Not available_
 
+## Context
+
+| Name                       | Type                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+
 ## Actions
 
 | Name          | Data                     | Options  | Description                                                                |

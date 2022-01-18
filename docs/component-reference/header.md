@@ -18,6 +18,12 @@ Displays a header text.
 
 _Not available_
 
+## Context
+
+| Name                       | Type                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+
 ## Actions
 
 _Not available_

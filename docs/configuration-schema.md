@@ -51,6 +51,33 @@ An object with arbitrary properties for the component.
 
 An object defining the context for the component. It is similar to `ComponentProperties` but its content will cascade down to child components, if available.
 
+In the example below, `my-component` sets the context value `some-contextual-property` to `"Hello"`, which is then accessible by the component and all its descendants.
+Then `article-one` overwrites the value, setting it to `"World"`. Now the value will return `"World"` if accessed by `article-one` or any of its descendants. 
+
+**Example:**
+
+```json
+"my-component": {
+  "type": "area",
+  "context": {
+    "some-contextual-property": "Hello"
+  },
+  "children": [
+    "article-one",
+    "article-two"
+  ]
+},
+"article-one": {
+  "type": "article",
+  "context": {
+    "some-contextual-property": "World"
+  }
+},
+"article-two": {
+  "type": "article"
+},
+```
+
 ### `ComponentLayout`
 
 An object defining the layout of the component in relation to its parent grid.
@@ -75,11 +102,11 @@ References a component by its key. A referenced component must be defined in the
 ```json
 // complex reference with overrides
 [
-  "my-component",
-  {
-    "breakpoints": ["tablet"],
-    "properties": { "title": "Overridden title for tablet devices" }
-  }
+    "my-component",
+    {
+        "breakpoints": ["tablet"],
+        "properties": { "title": "Overridden title for tablet devices" }
+    }
 ]
 ```
 

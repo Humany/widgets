@@ -49,6 +49,12 @@ Displays a list of guide links.
 | [`FavoriteProperties`](/component-reference/generic-properties#favoriteproperties) |
 | [`MetaDataProperties`](/component-reference/generic-properties#metadataproperties) |
 
+## Context
+
+| Name                       | Type                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+
 ## Actions
 
 _Not available_
