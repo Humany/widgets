@@ -53,9 +53,9 @@ Displays a guide, including feedback, dialogs and related guides.
 
 ## Context
 
-| Name                       | Type                                                                                           |
-| -------------------------- | ---------------------------------------------------------------------------------------------- |
-| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+| Name                       | Type                                                                                           | Info                                   |
+| -------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) | Does not apply to the body of a guide. |
 
 ## Actions
 
