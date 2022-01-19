@@ -15,7 +15,7 @@ Context value which sets certain components to use a different html element when
 | `h5` | `string` | Sets which html element to use when rendering h5 elements. |
 | `h6` | `string` | Sets which html element to use when rendering h6 elements. |
 
-In the example below, `root-area` and all its descendants will map use:
+In the example below, `root-area` and all its descendants will render:
 - `h2` instead of `h1`
 - `h3` instead of `h2`
 - `h4` instead of `h3`
