@@ -32,6 +32,12 @@ Displays a widget header, with optional back link and close button.
 
 _Not available_
 
+## Context
+
+| Name                       | Type                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+
 ## Actions
 
 | Name    | Data | Options                                                       | Description                                             |

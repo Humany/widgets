@@ -51,6 +51,12 @@ Displays a guide, including feedback, dialogs and related guides.
 | [`LanguageLabelProperties`](/component-reference/generic-properties#languagelabelproperties) |
 | [`MetaDataProperties`](/component-reference/generic-properties#metadataproperties)           |
 
+## Context
+
+| Name                       | Type                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+
 ## Actions
 
 _Not available_

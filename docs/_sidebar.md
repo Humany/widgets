@@ -43,6 +43,7 @@
   - [Tag List](component-reference/tag-list.md)
   - [Widget Header](component-reference/widget-header.md)
   - [Generic Properties](component-reference/generic-properties.md)
+  - [Context Properties](component-reference/context-properties.md)
 
 - Configuration Examples
   - [Accordion Guide List](configuration-examples/accordion.md)

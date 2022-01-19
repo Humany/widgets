@@ -22,6 +22,12 @@ Displays a list of contact methods, with an optional deflection guide list.
 | -------------------------------------------------------------------------- |
 | [`FormProperties`](/component-reference/generic-properties#formproperties) |
 
+## Context
+
+| Name                       | Type                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `typographyVariantMapping` | [`TypographyVariantMapping`](/component-reference/context-properties#typographyvariantmapping) |
+
 ## Actions
 
 _Not available_
