@@ -13,7 +13,7 @@ Displays a widget header, with optional back link and close button.
 | `actions`   | [`{ [key:string]: ActionNode }`](#actionnode) | No       | `{}`        | Object map with `ActionNode`s.                                                     |
 | `header`    | `string`                                      | No       | `undefined` | Header text.                                                                       |
 | `route`     | `string`                                      | No       | `undefined` | Target route for generating header link. If not defined, no link will be rendered. |
-| `tagLine`   | `string`                                      | No       | `undefined` | Tagline text.                                                                      |
+| `tagline`   | `string`                                      | No       | `undefined` | Tagline text.                                                                      |
 | `textAlign` | `string`                                      | No       | `'center'`  | Object map with action keys and display text.                                      |
 | `tooltip`   | `string`                                      | No       | `''`        | Tooltip text for header.                                                           |
 
