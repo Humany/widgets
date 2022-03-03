@@ -4,7 +4,7 @@ We have three different components that support expanding and rendering guide ch
 
 These are: [`GuideListComponent`](component-reference.md#guidelist), [`GuideCategoryBrowserComponent`](component-reference.md#guidecategorybrowser) and [`ContactListComponent`](component-reference.md#contactlist).
 
-!> Note that SEO support for widgets with accordion guides is Not currently available.
+!> Note that SEO support for widgets with accordion guides is _not_ currently available.
 
 ## Setup
 
@@ -102,7 +102,7 @@ These will, by default, be setup something like the following:
 
 ## Configuration
 
-Now we should be ready to configure our accordion.
+Now we're ready to configure our accordion.
 
 ### List components _(required)_
 
@@ -110,9 +110,11 @@ First we need to configure each component type to support accordion rendering. (
 
 We do this by:
 
-1. Setting the `accordion`-property to `true`. The `contact-list` has a a unique parameter called `deflectionAccordion` since presenting guides isn't its main function.
+1. Setting the `accordion`-property to `true`. The `contact-list` has a a unique property called `deflectionAccordion`.
+
 2. Setting the `routes.guide`-property to whichever route the component is rendered on.  
    _If a `guide-category-browser` is rendered on the browse-route the `routes.guide`-property should be set to `"browse"`_.
+
 3. Adding `guide` as a child to the component.
 
 ```json

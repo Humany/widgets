@@ -1,5 +1,10 @@
 - [Introduction](/)
 
+- Styling
+
+  - [Styling fundamentals](styling/css.md)
+  - [Styling examples](styling/examples.md)
+
 - Core APIs
 
   - [Orchestration API](orchestration.md)
@@ -10,6 +15,7 @@
   - [Conversation API](api/@humany/widget-conversation/readme.md)
   - [Tracking API](api/@humany/widget-tracking/readme.md)
   - [Service Client](api/@humany/serviceclient/readme.md)
+  - [Storage API](api/@humany/widget-services/storage.md)
 
 - [Configuration Schema](configuration-schema.md)
 
