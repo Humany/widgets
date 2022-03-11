@@ -5,6 +5,11 @@
   - [Styling fundamentals](styling/css.md)
   - [Styling examples](styling/examples.md)
 
+
+- Hosting options
+
+  - [Self-hosting](hosting.md)
+
 - Core APIs
 
   - [Orchestration API](orchestration.md)
