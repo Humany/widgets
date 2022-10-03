@@ -8,17 +8,18 @@ Displays a conversational component.
 
 ## Properties
 
-| Name               | Type                 | Required | Default               | Description                                                                      |
-| ------------------ | -------------------- | -------- | --------------------- | -------------------------------------------------------------------------------- |
-| `avatarSize`       | `string` \| `number` | No       | `32px`                | Size, as a CSS `width` property, of the agent's avatar.                            |
-| `inputDisabled`    | `boolean`            | No       | `false`               | Decides if the input element should be disabled or not.                             |
-| `inputHidden`      | `boolean`            | No       | `false`               | Decides if the input element should be hidden or not.                               |
-| `inputMultiline`   | `boolean`            | No       | `false`               | Decides if the input element should wrap content and render multiple lines of text. |
-| `inputPlaceholder` | `string`             | No       | `'Type your message'` | The placeholder text of the input element.                                       |
-| `loading`          | `boolean`            | No       | `false`               | Decides if the conversation is currently loading data or not.                       |
-| `providers`        | `string[]`           | No       | `[]`                  | List of provider keys for the component.                                         |
-| `sendButtonLabel`  | `string`             | No       | `'Send message'`      | Tooltip shown when hovering the send button.                                     |
-| `userLabel`        | `string`             | No       | `''`                  | Name of the use in the conversation.                                             |
+| Name               | Type                                  | Required | Default               | Description                                                                         |
+| ------------------ | ------------------------------------- | -------- | --------------------- | ----------------------------------------------------------------------------------- |
+| `avatarSize`       | `string` \| `number`                  | No       | `32px`                | Size, as a CSS `width` property, of the agent's avatar.                             |
+| `inputDisabled`    | `boolean`                             | No       | `false`               | Decides if the input element should be disabled or not.                             |
+| `inputHidden`      | `boolean`                             | No       | `false`               | Decides if the input element should be hidden or not.                               |
+| `inputMultiline`   | `boolean`                             | No       | `false`               | Decides if the input element should wrap content and render multiple lines of text. |
+| `inputPlaceholder` | `string`                              | No       | `'Type your message'` | The placeholder text of the input element.                                          |
+| `loading`          | `boolean`                             | No       | `false`               | Decides if the conversation is currently loading data or not.                       |
+| `providers`        | `string[]`                            | No       | `[]`                  | List of provider keys for the component.                                            |
+| `sendButtonLabel`  | `string`                              | No       | `'Send message'`      | Tooltip shown when hovering the send button.                                        |
+| `userLabel`        | `string`                              | No       | `''`                  | Name of the use in the conversation.                                                |
+| `secondaryAction`  | [`SecondaryAction`](#secondaryaction) | No       | `undefined`           | Optional secondary action button.                                                   |
 
 ## Generic properties
 
@@ -39,10 +40,18 @@ _Not available_
 | `user-submit` | `{ text: string }`       | _(none)_ | Dispatched when the user submits a text.                                   |
 | `user-typing` | `{ textLength: Number }` | _(none)_ | Dispatched when the user is typing.                                        |
 
+### `SecondaryAction`
+
+| Name     | Type     | Description                                                          |
+| -------- | -------- | -------------------------------------------------------------------- |
+| `action` | `string` | An action that will be dispatched when the button is pressed.        |
+| `label`  | `string` | Will be used as a "title" and aria-label on the HTML button element. |
+| `icon`   | `string` | An icon to be displayed, defaults to "browse" icon if left empty.    |
+
 ### `FormActionData`
 
 | Name        | Type       | Description                                                                     |
 | ----------- | ---------- | ------------------------------------------------------------------------------- |
-| `actionKey` | `string`   | The action key triggering the action. normally `'submit'`.                      |
+| `actionKey` | `string`   | The action key triggering the action. Normally `'submit'`.                      |
 | `data`      | `FormData` | An object representing a form. See `@humany/widget-forms` for more information. |
 | `formKey`   | `string`   | The unique key for the form.                                                    |

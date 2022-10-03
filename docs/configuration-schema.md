@@ -52,7 +52,7 @@ An object with arbitrary properties for the component.
 An object defining the context for the component. It is similar to `ComponentProperties` but its content will cascade down to child components, if available.
 
 In the example below, `my-component` sets the context value `some-contextual-property` to `"Hello"`, which is then accessible by the component and all its descendants.
-Then `article-one` overwrites the value, setting it to `"World"`. Now the value will return `"World"` if accessed by `article-one` or any of its descendants. 
+Then `article-one` overwrites the value, setting it to `"World"`. Now the value will return `"World"` if accessed by `article-one` or any of its descendants.
 
 **Example:**
 
@@ -190,10 +190,14 @@ Defines whether or not the widget should have a manual trigger to activate.
 
 An object defining a trigger badge.
 
-| Name     | Type                                                       | Required | Default     | Description                                        |
-| -------- | ---------------------------------------------------------- | -------- | ----------- | -------------------------------------------------- |
-| `label`  | `String`                                                   | No       | `''`        | An optional label to be rendered inside the badge. |
-| `symbol` | [`Symbol`](/component-reference/generic-properties#symbol) | No       | `undefined` | The symbol to be rendered inside the badge.        |
+| Name            | Type                                                       | Required | Default     | Description                                                  |
+| --------------- | ---------------------------------------------------------- | -------- | ----------- | ------------------------------------------------------------ |
+| `label`         | `String`                                                   | No       | `''`        | An optional label to be rendered inside the badge.           |
+| `symbol`        | [`Symbol`](/component-reference/generic-properties#symbol) | No       | `undefined` | The symbol to be rendered inside the badge.                  |
+| `openTooltip`   | `String`                                                   | No       | `''`        | A tooltip for when the widget is open.                       |
+| `closedTooltip` | `String`                                                   | No       | `''`        | A tooltip for when the widget is closed.                     |
+| `action`        | `'hide' \| 'close'`                                        | No       | `'hide'`    | The action that is dispatched when the trigger is triggered. |
+| `ariaLabel`     | `String`                                                   | No       | `''`        | The aria-label HTML attribute on the trigger element.        |
 
 ### `Symbol`
 
