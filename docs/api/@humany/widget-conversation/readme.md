@@ -438,7 +438,5 @@ This will produce an array of items in the following format:
     alias: string;          // name of the message author
     source: string;         // agent or user
     timestamp: number;      // timestamp of when message was created
-    type: string;           // deprecated, no longer used
-    tags: string[];         // deprecated, no longer used
 }
 ```
