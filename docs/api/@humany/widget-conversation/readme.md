@@ -394,3 +394,49 @@ component.actions.watch('conversation.action', (input, next) => {
     }
 });
 ```
+
+## Completing a conversation (handover)
+
+When you are handing over the conversation to another provider, the current provider is disabled until the child provider has completed. To hand it over to the previous provider you should use the `complete()` method on the `ConversationProvider` object.
+Example:
+```ts
+if (actionKey === 'email-confirmation-submit') {
+    conversation.complete();
+}
+```
+This will complete the current provider and return to the one that started the now closed provider.
+
+## Rehydrating the conversation
+
+The conversation may be stored in a session to allow it to remain when reloading the page.
+This behavior is disabled by default but can be turned on by adding the `rehydrate` property to the `ConversationComponent` like this:
+```
+"components": {
+    "type": "conversation",
+    "properties": {
+        "rehydrate": true
+    }
+}
+```
+
+## Reading the conversation history
+
+In order to print the complete conversation you can use the `ConversationProvider.getHistory()` method.
+
+Example:
+
+```ts
+const logs = conversation.getHistory();
+```
+
+This will produce an array of items in the following format:
+
+```ts
+{
+    message?: string;       // the body of the message, if any
+    options?: string[]      // an array of options presented in the message
+    alias: string;          // name of the message author
+    source: string;         // agent or user
+    timestamp: number;      // timestamp of when message was created
+}
+```
