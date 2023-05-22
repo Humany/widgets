@@ -2,9 +2,9 @@
 
 Displays a list of notifications.
 
-| Type                | Plugin                      | Package                     |
-| ------------------- | --------------------------- | --------------------------- |
-| `notification-list` | `NotificationListComponent` | `@humany/widget-components` |
+| Type                | Plugin                      | Package                                                    |
+| ------------------- | --------------------------- | ---------------------------------------------------------- |
+| `notification-list` | `NotificationListComponent` | `@telia-ace/knowledge-widget-components-notification-list` |
 
 ## Properties
 

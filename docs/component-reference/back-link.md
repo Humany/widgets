@@ -2,9 +2,9 @@
 
 Displays a link which when clicked navigates one step back on the widget's router.
 
-| Type        | Plugin              | Package                     |
-| ----------- | ------------------- | --------------------------- |
-| `back-link` | `BackLinkComponent` | `@humany/widget-components` |
+| Type        | Plugin              | Package                                  |
+| ----------- | ------------------- | ---------------------------------------- |
+| `back-link` | `BackLinkComponent` | `@telia-ace/widget-components-back-link` |
 
 ## Properties
 

@@ -162,7 +162,7 @@ type Duration = {
 _Using promises_
 
 ```ts
-import { createStorageWriter, StorageCategory, StorageWriter } from '@humany/widget-services';
+import { createStorageWriter, StorageCategory, StorageWriter } from '@telia-ace/widget-services';
 
 // Functional session storage value with the key 'current-route' scoped on widget for 30 days.
 createStorageWriter(container, 'current-route', StorageCategory.Functional).then((write) => {
@@ -182,7 +182,7 @@ createStorageWriter(container, 'client', StorageCategory.Necessary, {
 _Using async/await_
 
 ```ts
-import { createStorageWriter, StorageCategory, StorageWriter } from '@humany/widget-services';
+import { createStorageWriter, StorageCategory, StorageWriter } from '@telia-ace/widget-services';
 
 // Functional session storage value with the key 'current-route' scoped on widget for 30 days.
 const storeCurrentRoute = await createStorageWriter(
@@ -218,7 +218,7 @@ readStorage<Type>(container: Container, key: string, medium: StorageMedium = Sto
 _Using promises_
 
 ```ts
-import { readStorage, StorageMedium } from '@humany/widget-services';
+import { readStorage, StorageMedium } from '@telia-ace/widget-services';
 
 // Read stored session value with the key 'current-route'.
 readStorage(container, 'current-route').then((value) => {
@@ -234,7 +234,7 @@ readStorage(container, 'client', StorageMedium.Cookie).then((value) => {
 _Using async/await_
 
 ```ts
-import { readStorage, StorageMedium } from '@humany/widget-services';
+import { readStorage, StorageMedium } from '@telia-ace/widget-services';
 
 // Read stored session value with the key 'current-route'.
 const value = await readStorage(container, 'current-route');

@@ -2,9 +2,9 @@
 
 Displays a list of contact methods, with an optional deflection guide list.
 
-| Type           | Plugin                 | Package                     |
-| -------------- | ---------------------- | --------------------------- |
-| `contact-list` | `ContactListComponent` | `@humany/widget-components` |
+| Type           | Plugin                 | Package                                               |
+| -------------- | ---------------------- | ----------------------------------------------------- |
+| `contact-list` | `ContactListComponent` | `@telia-ace/knowledge-widget-components-contact-list` |
 
 ## Properties
 

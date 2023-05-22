@@ -2,9 +2,9 @@
 
 Displays a search element.
 
-| Type     | Plugin            | Package                     |
-| -------- | ----------------- | --------------------------- |
-| `search` | `SearchComponent` | `@humany/widget-components` |
+| Type     | Plugin            | Package                                         |
+| -------- | ----------------- | ----------------------------------------------- |
+| `search` | `SearchComponent` | `@telia-ace/knowledge-widget-components-search` |
 
 ## Properties
 

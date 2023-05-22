@@ -2,9 +2,9 @@
 
 Displays a list of related tags for a particular guide, resolved by the current route data.
 
-| Type               | Plugin                    | Package                     |
-|--------------------|---------------------------|-----------------------------|
-| `related-tag-list` | `RelatedTagListComponent` | `@humany/widget-components` |
+| Type               | Plugin                    | Package                                                   |
+|--------------------|---------------------------|---------------------------------------------------------- |
+| `related-tag-list` | `RelatedTagListComponent` | `@telia-ace/knowledge-widget-components-related-tag-list` |
 
 ## Properties
 

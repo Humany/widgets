@@ -17,10 +17,10 @@
 
 - Other APIs
 
-  - [Conversation API](api/@humany/widget-conversation/readme.md)
-  - [Tracking API](api/@humany/widget-tracking/readme.md)
-  - [Service Client](api/@humany/serviceclient/readme.md)
-  - [Storage API](api/@humany/widget-services/storage.md)
+  - [Conversation API](api/@telia-ace/widget-conversation/readme.md)
+  - [Tracking API](api/@telia-ace/widget-tracking/readme.md)
+  - [Service Client](api/@telia-ace/serviceclient/readme.md)
+  - [Storage API](api/@telia-ace/widget-services/storage.md)
 
 - [Configuration Schema](configuration-schema.md)
 

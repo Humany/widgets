@@ -2,9 +2,9 @@
 
 Displays breadcrumbs based on a static hierarchy. Be aware this component is opinionated regarding the hierarchy of the routes, and may not support custom routing configurations.
 
-| Type          | Plugin                 | Package                     |
-|---------------|------------------------|-----------------------------|
-| `breadcrumbs` | `BreadcrumbsComponent` | `@humany/widget-components` |
+| Type          | Plugin                 | Package                                              |
+|---------------|------------------------|------------------------------------------------------|
+| `breadcrumbs` | `BreadcrumbsComponent` | `@telia-ace/knowledge-widget-components-breadcrumbs` |
 
 ## Properties
 

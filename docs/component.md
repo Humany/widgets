@@ -2,9 +2,9 @@
 The Component API provides functions for modifying the properties on components as well as reacting to actions.
 
 ## Acessing the API
-Inside a plugin, call the static [`ComponentPlatform.getInstance()`](modules/@humany/widget-core/classes/componentplatform.html#getinstance) by passing in the current `Container` as shown below. It will return a `Promise` that is resolved to the global `ComponentPlatform` instance. 
+Inside a plugin, call the static `ComponentPlatform.getInstance()` by passing in the current `Container` as shown below. It will return a `Promise` that is resolved to the global `ComponentPlatform` instance. 
 ```js
-import { ComponentPlatform } from '@humany/widget-core';
+import { ComponentPlatform } from '@telia-ace/widget-core';
 
 const MyPlugin = async (container) => {
   const platform = await ComponentPlatform.getInstance(container);
@@ -71,10 +71,10 @@ Use the `extendComponent()` utility to extend a specific component type "from th
 | `type`      | `String`                                            | Yes      |         | The component type to extend.                    |
 
 #### `ExtendComponentHandler`
-Handler for extending a component. It will be called whenever a component of the defined type is activated within the widget. The handler will be called with a [`ComponentNodeController`](modules/@humany/widget-core/classes/componentnodecontroller.html) as only argument. The `ComponentNodeController` is similar to `ComponentController`, but is tied directly to the underlying [`ComponentNode`](modules/@humany/widget-core/classes/componentnode.html) and provides functions for writing _and_ reading properties and context as well as managing its actions.
+Handler for extending a component. It will be called whenever a component of the defined type is activated within the widget. The handler will be called with a `ComponentNodeController` as only argument. The `ComponentNodeController` is similar to `ComponentController`, but is tied directly to the underlying `ComponentNode` and provides functions for writing _and_ reading properties and context as well as managing its actions.
 
 ```js
-import { extendComponent } from '@humany/widget-core';
+import { extendComponent } from '@telia-ace/widget-core';
 
 const MyPlugin = (container) => {
   return extendComponent(container, 'guide', (component) => {

@@ -7,7 +7,7 @@ The Tracking Platform provides an API for tracking and listening to events and u
 Inside a plugin, pass the current `Container` instance to the static `getInstance()` method to access the global instance of `TrackingPlatform`.
 
 ```javascript
-import { TrackingPlatform } from '@humany/widget-tracking';
+import { TrackingPlatform } from '@telia-ace/widget-tracking';
 
 const MyTrackingPlugin = async (container) => {
     const platform = await TrackingPlatform.getInstance(container);
@@ -19,7 +19,7 @@ const MyTrackingPlugin = async (container) => {
 In order to actions events at least one analyzer must be registered on the `TrackingPlatform` instance. Import `GridWidgetAnalyzer` and register it with a custom key. Make sure the key is unique to avoid conflicts with existing analyzers.
 
 ```javascript
-import { TrackingPlatform, GridWidgetAnalyzer } from '@humany/widget-tracking';
+import { TrackingPlatform, GridWidgetAnalyzer } from '@telia-ace/widget-tracking';
 ```
 
 ```

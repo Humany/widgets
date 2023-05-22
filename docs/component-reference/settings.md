@@ -2,9 +2,9 @@
 
 Displays settings for the widget.
 
-| Type       | Plugin              | Package                     |
-| ---------- | ------------------- | --------------------------- |
-| `settings` | `SettingsComponent` | `@humany/widget-components` |
+| Type       | Plugin              | Package                                           |
+| ---------- | ------------------- | ------------------------------------------------- |
+| `settings` | `SettingsComponent` | `@telia-ace/knowledge-widget-components-settings` |
 
 ## Properties
 

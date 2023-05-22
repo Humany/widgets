@@ -2,9 +2,9 @@
 
 Displays a return button when a conversation is ongoing and the user is not on the conversation route.
 
-| Type                         | Plugin                              | Package                       |
-|------------------------------|-------------------------------------|-------------------------------|
-| `conversation-return-button` | `ConversationReturnButtonComponent` | `@humany/widget-conversation` |
+| Type                         | Plugin                              | Package                          |
+|------------------------------|-------------------------------------|-------------------------------   |
+| `conversation-return-button` | `ConversationReturnButtonComponent` | `@telia-ace/widget-conversation` |
 
 ## Properties
 

@@ -1,7 +1,7 @@
 # Orchestration API
 
 ## Humany object (Environment)
-The Orchestration API consists of a global [`Humany`](modules/@humany/widget-core/classes/humany.html) object, available as `window.humany` on default distributions. It orchestrates widgets and implementations and provides an API for controlling the life-cycle of widgets and their plugins. Each widget is represented by a `Widget` object. 
+The Orchestration API consists of a global `Humany` object, available as `window.humany` on default distributions. It orchestrates widgets and implementations and provides an API for controlling the life-cycle of widgets and their plugins. Each widget is represented by a `Widget` object. 
 
 ### List available widgets
 The `widgets` property of the `Humany` object contains all registered widgets on the current page. Run the following command to list all available widgets for a page:
@@ -28,9 +28,9 @@ humany.widgets.find({
 ```
 
 ## Commands
-The [`Widget`](modules/@humany/widget-core/classes/widget.html) object exposes an [`invoke()`](modules/@humany/widget-core/classes/widget.html#invoke) method which can be used to send commands to a widget. Available commands are unique for each widget type, but from version 5 of the runtime (in contrast to previous versions) only one widget type is available; ACE One Widget.
+The `Widget` object exposes an `invoke()` method which can be used to send commands to a widget. Available commands are unique for each widget type, but from version 5 of the runtime (in contrast to previous versions) only one widget type is available; ACE One Widget.
 
-The `invoke()` method accepts two arguments, the `commandName` and `data`. The `data` argument will be delegated to the function on the [`WidgetType`](modules/@humany/widget-core/classes/widgettype.html) with the specified name.
+The `invoke()` method accepts two arguments, the `commandName` and `data`. The `data` argument will be delegated to the function on the `WidgetType` with the specified name.
 
 !> To be able to invoke commands on a widget it must first be activated.
 

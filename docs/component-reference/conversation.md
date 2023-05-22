@@ -2,9 +2,9 @@
 
 Displays a conversational component.
 
-| Type           | Plugin                  | Package                       |
-| -------------- | ----------------------- | ----------------------------- |
-| `conversation` | `ConversationComponent` | `@humany/widget-conversation` |
+| Type           | Plugin                  | Package                          |
+| -------------- | ----------------------- | -------------------------------- |
+| `conversation` | `ConversationComponent` | `@telia-ace/widget-conversation` |
 
 ## Properties
 
@@ -50,8 +50,8 @@ _Not available_
 
 ### `FormActionData`
 
-| Name        | Type       | Description                                                                     |
-| ----------- | ---------- | ------------------------------------------------------------------------------- |
-| `actionKey` | `string`   | The action key triggering the action. Normally `'submit'`.                      |
-| `data`      | `FormData` | An object representing a form. See `@humany/widget-forms` for more information. |
-| `formKey`   | `string`   | The unique key for the form.                                                    |
+| Name        | Type       | Description                                                                        |
+| ----------- | ---------- | ---------------------------------------------------------------------------------- |
+| `actionKey` | `string`   | The action key triggering the action. Normally `'submit'`.                         |
+| `data`      | `FormData` | An object representing a form. See `@telia-ace/widget-forms` for more information. |
+| `formKey`   | `string`   | The unique key for the form.                                                       |

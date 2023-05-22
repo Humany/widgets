@@ -1,4 +1,4 @@
-# @humany/serviceclient
+# @telia-ace/serviceclient
 
 The Service Client provides an API for interacting with classic Humany projections. A projection is a URL representing a subset of content (guides, categories, contact methods etc) in a Humany application.
 
@@ -12,7 +12,7 @@ https://[application].humany.net/[projection-name]
 Create an instance by passing the Projection URL as the first constructor argument.
 
 ```javascript
-import { ServiceClient } from '@humany/serviceclient';
+import { ServiceClient } from '@telia-ace/knowledge-serviceclient';
 
 const projection = '[projection-url]';
 const serviceClient = new ServiceClient(projection);
@@ -159,7 +159,7 @@ serviceClient.getCategories((categoryResult) => {
 For implementations running version 4 you can author a plugin and access the current Service Client through the `container` under the key `'matchingClient'`. The value must be resolved asynchronously as in the example below.
 
 ```javascript
-import { Plugin } from '@humany/widget-core';
+import { Plugin } from '@telia-ace/widget-core';
 
 class MyPlugin extends Plugin {
   initialize() {

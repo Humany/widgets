@@ -2,9 +2,9 @@
 
 Displays a category browser for a list of categories, rendered as a grid.
 
-| Type                     | Plugin                          | Package                     |
-| ------------------------ | ------------------------------- | --------------------------- |
-| `guide-category-browser` | `GuideCategoryBrowserComponent` | `@humany/widget-components` |
+| Type                     | Plugin                          | Package                                                         |
+| ------------------------ | ------------------------------- | --------------------------------------------------------------- |
+| `guide-category-browser` | `GuideCategoryBrowserComponent` | `@telia-ace/knowledge-widget-components-guide-category-browser` |
 
 ## Properties
 

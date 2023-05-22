@@ -2,9 +2,9 @@
 
 Displays a header text.
 
-| Type     | Plugin            | Package                     |
-| -------- | ----------------- | --------------------------- |
-| `header` | `HeaderComponent` | `@humany/widget-components` |
+| Type     | Plugin            | Package                               |
+| -------- | ----------------- | ------------------------------------- |
+| `header` | `HeaderComponent` | `@telia-ace/widget-components-header` |
 
 ## Properties
 

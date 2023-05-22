@@ -2,9 +2,9 @@
 
 Displays a list of guide categories.
 
-| Type                  | Plugin                       | Package                     |
-| --------------------- | ---------------------------- | --------------------------- |
-| `guide-category-list` | `GuideCategoryListComponent` | `@humany/widget-components` |
+| Type                  | Plugin                       | Package                                                      |
+| --------------------- | ---------------------------- | ------------------------------------------------------------ |
+| `guide-category-list` | `GuideCategoryListComponent` | `@telia-ace/knowledge-widget-components-guide-category-list` |
 
 ## Properties
 
