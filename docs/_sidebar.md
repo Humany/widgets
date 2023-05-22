@@ -15,6 +15,13 @@
   - [Orchestration API](orchestration.md)
   - [Component API](component.md)
 
+- Other APIs
+
+  - [Conversation API](api/@telia-ace/widget-conversation/readme.md)
+  - [Tracking API](api/@telia-ace/widget-tracking/readme.md)
+  - [Service Client](api/@telia-ace/serviceclient/readme.md)
+  - [Storage API](api/@telia-ace/widget-services/storage.md)
+
 - [Configuration Schema](configuration-schema.md)
 
 - Component Reference
