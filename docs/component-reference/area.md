@@ -2,9 +2,9 @@
 
 Renders a grid based area containing children.
 
-| Type   | Plugin          | Package                     |
-| ------ | --------------- | --------------------------- |
-| `area` | `AreaComponent` | `@humany/widget-components` |
+| Type   | Plugin          | Package                             |
+| ------ | --------------- | ----------------------------------- |
+| `area` | `AreaComponent` | `@telia-ace/widget-components-area` |
 
 ## Properties
 

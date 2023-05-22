@@ -2,9 +2,9 @@
 
 Displays a contact method.
 
-| Type             | Plugin                   | Package                     |
-| ---------------- | ------------------------ | --------------------------- |
-| `contact-method` | `ContactMethodComponent` | `@humany/widget-components` |
+| Type             | Plugin                   | Package                                                 |
+| ---------------- | ------------------------ | ------------------------------------------------------- |
+| `contact-method` | `ContactMethodComponent` | `@telia-ace/knowledge-widget-components-contact-method` |
 
 ## Properties
 

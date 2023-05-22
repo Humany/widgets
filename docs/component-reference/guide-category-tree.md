@@ -2,9 +2,9 @@
 
 Displays a nested hierarchical list of guide categories.
 
-| Type                  | Plugin                       | Package                     |
-|-----------------------|------------------------------|-----------------------------|
-| `guide-category-tree` | `GuideCategoryTreeComponent` | `@humany/widget-components` |
+| Type                  | Plugin                       | Package                                                      |
+|-----------------------|------------------------------|------------------------------------------------------------- |
+| `guide-category-tree` | `GuideCategoryTreeComponent` | `@telia-ace/knowledge-widget-components-guide-category-tree` |
 
 ## Properties
 

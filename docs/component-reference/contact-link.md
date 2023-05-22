@@ -2,9 +2,9 @@
 
 Displays a link which can be targeted to a specific route name or other widget within the same implementation.
 
-| Type           | Plugin                 | Package                     |
-| -------------- | ---------------------- | --------------------------- |
-| `contact-link` | `ContactLinkComponent` | `@humany/widget-components` |
+| Type           | Plugin                 | Package                                               |
+| -------------- | ---------------------- | ----------------------------------------------------- |
+| `contact-link` | `ContactLinkComponent` | `@telia-ace/knowledge-widget-components-contact-link` |
 
 ## Properties
 

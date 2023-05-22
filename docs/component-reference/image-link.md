@@ -2,9 +2,9 @@
 
 Displays an image with support for navigation.
 
-| Type         | Plugin               | Package                     |
-| ------------ | -------------------- | --------------------------- |
-| `image-link` | `ImageLinkComponent` | `@humany/widget-components` |
+| Type         | Plugin               | Package                                   |
+| ------------ | -------------------- | ----------------------------------------- |
+| `image-link` | `ImageLinkComponent` | `@telia-ace/widget-components-image-link` |
 
 ## Properties
 

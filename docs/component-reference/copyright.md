@@ -2,9 +2,9 @@
 
 Displays a copyright sign.
 
-| Type        | Plugin               | Package                     |
-| ----------- | -------------------- | --------------------------- |
-| `copyright` | `CopyrightComponent` | `@humany/widget-components` |
+| Type        | Plugin               | Package                                  |
+| ----------- | -------------------- | ---------------------------------------- |
+| `copyright` | `CopyrightComponent` | `@telia-ace/widget-components-copyright` |
 
 ## Properties
 

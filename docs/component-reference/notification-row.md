@@ -2,9 +2,9 @@
 
 Displays a notification row.
 
-| Type               | Plugin                     | Package                     |
-|--------------------|----------------------------|-----------------------------|
-| `notification-row` | `NotificationRowComponent` | `@humany/widget-components` |
+| Type               | Plugin                     | Package                                                   |
+|--------------------|----------------------------|---------------------------------------------------------- |
+| `notification-row` | `NotificationRowComponent` | `@telia-ace/knowledge-widget-components-notification-row` |
 
 ## Properties
 

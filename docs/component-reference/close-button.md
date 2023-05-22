@@ -2,9 +2,9 @@
 
 Displays a close button which when clicked dispatches an action.
 
-| Type           | Plugin                 | Package                     |
-| -------------- | ---------------------- | --------------------------- |
-| `close-button` | `CloseButtonComponent` | `@humany/widget-components` |
+| Type           | Plugin                 | Package                                     |
+| -------------- | ---------------------- | ------------------------------------------- |
+| `close-button` | `CloseButtonComponent` | `@telia-ace/widget-components-close-button` |
 
 ## Properties
 

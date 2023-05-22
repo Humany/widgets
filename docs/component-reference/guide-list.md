@@ -2,9 +2,9 @@
 
 Displays a list of guide links.
 
-| Type         | Plugin               | Package                     |
-| ------------ | -------------------- | --------------------------- |
-| `guide-list` | `GuideListComponent` | `@humany/widget-components` |
+| Type         | Plugin               | Package                                             |
+| ------------ | -------------------- | --------------------------------------------------- |
+| `guide-list` | `GuideListComponent` | `@telia-ace/knowledge-widget-components-guide-list` |
 
 ## Properties
 

@@ -2,9 +2,9 @@
 
 Displays a list of tags.
 
-| Type       | Plugin             | Package                     |
-|------------|--------------------|-----------------------------|
-| `tag-list` | `TagListComponent` | `@humany/widget-components` |
+| Type       | Plugin             | Package                                           |
+|------------|--------------------|-------------------------------------------------- |
+| `tag-list` | `TagListComponent` | `@telia-ace/knowledge-widget-components-tag-list` |
 
 ## Properties
 

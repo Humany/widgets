@@ -2,9 +2,9 @@
 
 Displays a list of guide categories as a drop down list.
 
-| Type                      | Plugin                           | Package                     |
-| ------------------------- | -------------------------------- | --------------------------- |
-| `guide-category-dropdown` | `GuideCategoryDropdownComponent` | `@humany/widget-components` |
+| Type                      | Plugin                           | Package                                                          |
+| ------------------------- | -------------------------------- | ---------------------------------------------------------------- |
+| `guide-category-dropdown` | `GuideCategoryDropdownComponent` | `@telia-ace/knowledge-widget-components-guide-category-dropdown` |
 
 ## Properties
 

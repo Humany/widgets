@@ -2,9 +2,9 @@
 
 Non-visual component that acts as stop anchor when tabbing.
 
-| Type       | Plugin             | Package                     |
-| ---------- | ------------------ | --------------------------- |
-| `tab-stop` | `TabStopComponent` | `@humany/widget-components` |
+| Type       | Plugin             | Package                                 |
+| ---------- | ------------------ | --------------------------------------- |
+| `tab-stop` | `TabStopComponent` | `@telia-ace/widget-components-tab-stop` |
 
 ## Properties
 

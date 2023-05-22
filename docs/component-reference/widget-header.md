@@ -2,9 +2,9 @@
 
 Displays a widget header, with optional back link and close button.
 
-| Type            | Plugin                  | Package                     |
-|-----------------|-------------------------|-----------------------------|
-| `widget-header` | `WidgetHeaderComponent` | `@humany/widget-components` |
+| Type            | Plugin                  | Package                                      |
+|-----------------|-------------------------|--------------------------------------------- |
+| `widget-header` | `WidgetHeaderComponent` | `@telia-ace/widget-components-widget-header` |
 
 ## Properties
 

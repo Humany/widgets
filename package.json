@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "import-docs": "node scripts/import-docs.js",
-    "serve-docs": "./node_modules/.bin/docsify serve docs"
+    "serve-docs": "docsify serve docs"
   },
   "devDependencies": {
     "ncp": "^2.0.0"

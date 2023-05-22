@@ -2,9 +2,9 @@
 
 Displays an embedded inline widget.
 
-| Type              | Plugin                    | Package                     |
-| ----------------- | ------------------------- | --------------------------- |
-| `embedded-widget` | `EmbeddedWidgetComponent` | `@humany/widget-components` |
+| Type              | Plugin                    | Package                                        |
+| ----------------- | ------------------------- | ---------------------------------------------- |
+| `embedded-widget` | `EmbeddedWidgetComponent` | `@telia-ace/widget-components-embedded-widget` |
 
 ## Properties
 

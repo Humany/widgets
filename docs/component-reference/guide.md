@@ -2,9 +2,9 @@
 
 Displays a guide, including feedback, dialogs and related guides.
 
-| Type    | Plugin           | Package                     |
-| ------- | ---------------- | --------------------------- |
-| `guide` | `GuideComponent` | `@humany/widget-components` |
+| Type    | Plugin           | Package                                        |
+| ------- | ---------------- | ---------------------------------------------- |
+| `guide` | `GuideComponent` | `@telia-ace/knowledge-widget-components-guide` |
 
 ## Properties
 
