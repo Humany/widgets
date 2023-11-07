@@ -8,18 +8,19 @@ Displays a conversational component.
 
 ## Properties
 
-| Name               | Type                                  | Required | Default               | Description                                                                         |
-| ------------------ | ------------------------------------- | -------- | --------------------- | ----------------------------------------------------------------------------------- |
-| `avatarSize`       | `string` \| `number`                  | No       | `32px`                | Size, as a CSS `width` property, of the agent's avatar.                             |
-| `inputDisabled`    | `boolean`                             | No       | `false`               | Decides if the input element should be disabled or not.                             |
-| `inputHidden`      | `boolean`                             | No       | `false`               | Decides if the input element should be hidden or not.                               |
-| `inputMultiline`   | `boolean`                             | No       | `false`               | Decides if the input element should wrap content and render multiple lines of text. |
-| `inputPlaceholder` | `string`                              | No       | `'Type your message'` | The placeholder text of the input element.                                          |
-| `loading`          | `boolean`                             | No       | `false`               | Decides if the conversation is currently loading data or not.                       |
-| `providers`        | `string[]`                            | No       | `[]`                  | List of provider keys for the component.                                            |
-| `sendButtonLabel`  | `string`                              | No       | `'Send message'`      | Tooltip shown when hovering the send button.                                        |
-| `userLabel`        | `string`                              | No       | `''`                  | Name of the use in the conversation.                                                |
-| `secondaryAction`  | [`SecondaryAction`](#secondaryaction) | No       | `undefined`           | Optional secondary action button.                                                   |
+| Name                       | Type                                  | Required | Default                  | Description                                                                         |
+| -------------------------- | ------------------------------------- | -------- | ------------------------ | ----------------------------------------------------------------------------------- |
+| `avatarSize`               | `string` \| `number`                  | No       | `32px`                   | Size, as a CSS `width` property, of the agent's avatar.                             |
+| `inputDisabled`            | `boolean`                             | No       | `false`                  | Decides if the input element should be disabled or not.                             |
+| `inputHidden`              | `boolean`                             | No       | `false`                  | Decides if the input element should be hidden or not.                               |
+| `inputMultiline`           | `boolean`                             | No       | `false`                  | Decides if the input element should wrap content and render multiple lines of text. |
+| `inputPlaceholder`         | `string`                              | No       | `'Type your message'`    | The placeholder text of the input element.                                          |
+| `loading`                  | `boolean`                             | No       | `false`                  | Decides if the conversation is currently loading data or not.                       |
+| `providers`                | `string[]`                            | No       | `[]`                     | List of provider keys for the component.                                            |
+| `sendButtonLabel`          | `string`                              | No       | `'Send message'`         | Tooltip shown when hovering the send button.                                        |
+| `userLabel`                | `string`                              | No       | `''`                     | Name of the use in the conversation.                                                |
+| `secondaryAction`          | [`SecondaryAction`](#secondaryaction) | No       | `undefined`              | Optional secondary action button.                                                   |
+| `skipToLatestMessageLabel` | `string`                              | No       | `Skip to latest message` | Text for link to latest message.                                                    |
 
 ## Generic properties
 
