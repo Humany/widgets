@@ -7,10 +7,10 @@ The Tracking Platform provides an API for tracking and listening to events and u
 Inside a plugin, pass the current `Container` instance to the static `getInstance()` method to access the global instance of `TrackingPlatform`.
 
 ```javascript
-import { TrackingPlatform } from '@telia-ace/widget-tracking';
+import { TrackingPlatform } from "@telia-ace/widget-tracking";
 
 const MyTrackingPlugin = async (container) => {
-    const platform = await TrackingPlatform.getInstance(container);
+  const platform = await TrackingPlatform.getInstance(container);
 };
 ```
 
@@ -19,7 +19,10 @@ const MyTrackingPlugin = async (container) => {
 In order to actions events at least one analyzer must be registered on the `TrackingPlatform` instance. Import `GridWidgetAnalyzer` and register it with a custom key. Make sure the key is unique to avoid conflicts with existing analyzers.
 
 ```javascript
-import { TrackingPlatform, GridWidgetAnalyzer } from '@telia-ace/widget-tracking';
+import {
+  TrackingPlatform,
+  GridWidgetAnalyzer,
+} from "@telia-ace/widget-tracking";
 ```
 
 ```
@@ -48,7 +51,23 @@ Emitted when widget is opened. Provides the location object which contains the c
 
 ```typescript
 {
-    location: Location;
+  location: Location;
+}
+```
+
+### `WidgetClose`
+
+Emitted when widget is closed.
+
+#### Response:
+
+```typescript
+{
+    location: Location,
+    guide: {
+      id: number | undefined,     // Only available for bot widget
+      title: string | undefined,  // Only available for bot widget
+    },
 }
 ```
 
@@ -74,10 +93,10 @@ Emitted when a feedback is given to a guide.
 
 Provides the following data:
 
--   **guide**: Guide which feedback was given to
--   **categories**: Categories which the guide belongs to (only avaible in floating widgets)
--   **feedbackType**: Type of feedback which was given
--   **location**: Current location
+- **guide**: Guide which feedback was given to
+- **categories**: Categories which the guide belongs to (only avaible in floating widgets)
+- **feedbackType**: Type of feedback which was given
+- **location**: Current location
 
 #### Response:
 
@@ -86,7 +105,7 @@ Provides the following data:
   guide: GuideItem,
   categories: CategoryItem[],  // Only available for floating widgets
   feedbackType: string,
-  location: Location
+  location: Location,
 }
 ```
 
@@ -126,10 +145,10 @@ Emitted when a search has been made.
 
 Provides the following data:
 
--   **phrase**: Search phrase
--   **hits**: Number of hits displayed to user when search was made
--   **totalHits**: Total number of hits search generated
--   **location**: Current location
+- **phrase**: Search phrase
+- **hits**: Number of hits displayed to user when search was made
+- **totalHits**: Total number of hits search generated
+- **location**: Current location
 
 #### Response:
 
@@ -138,7 +157,7 @@ Provides the following data:
   phrase: string,
   hits: number,
   totalHits: number,
-  location: Location
+  location: Location,
 }
 ```
 
@@ -148,9 +167,9 @@ Emitted when a search result is clicked on.
 
 Provides the following data:
 
--   **position**: Position of the search result clicked on among the search result list.
--   **guide**: Guide clicked on
--   **location**: Current location
+- **position**: Position of the search result clicked on among the search result list.
+- **guide**: Guide clicked on
+- **location**: Current location
 
 #### Response:
 
@@ -158,7 +177,7 @@ Provides the following data:
 {
   position: number,
   guide: GuideItem,
-  location: Location
+  location: Location,
 }
 ```
 
@@ -168,12 +187,12 @@ Emitted when contact methods is offered but not yet entered,
 
 ```typescript
 {
-    contactMethods: {
-        id: string;
-        title: string;
-        type: string;
-    }
-    [];
+  contactMethods: {
+    id: string,
+    title: string,
+    type: string,
+  },
+  [],
 }
 ```
 
@@ -184,15 +203,15 @@ Emitted when a contact method is validated but not yet completed,
 ```typescript
 {
   contactMethod: {
-    id: string;
-    title: string;
-    type: string;
+    id: string,
+    title: string,
+    type: string,
   },
   from: {
-    type: string;
-    data?: { [key: string]: any };
-  };
-  valid: boolean;
+    type: string,
+    data?: { [key: string]: any },
+  },
+  valid: boolean,
 }
 ```
 
@@ -203,6 +222,160 @@ Emitted on route change
 ```typescript
 {
   location: Location,
+}
+```
+
+### `SecondaryButtonClick`
+
+Emitted when clicking the help button.
+
+#### Response:
+
+```typescript
+{
+  location: Location,
+}
+```
+
+### `ButtonListItemClick`
+
+Emitted when clicking a button in list (bot).
+
+#### Response:
+
+```typescript
+{
+  id: number,
+  label: string,
+}
+```
+
+### `LinkListItemClick`
+
+Emitted when clicking an item in list (bot).
+
+#### Response:
+
+```typescript
+{
+  label: string,
+  option: string,
+}
+```
+
+### `ContactMethodListItemClick`
+
+Emitted when clicking a contact item in list (bot).
+
+#### Response:
+
+```typescript
+{
+  contactMethod: {
+    id: string,
+    title: string,
+  },
+}
+```
+
+### `GuideListItemClick`
+
+Emitted when clicking a guide item in list (floating, inline & portal).
+
+#### Response:
+
+```typescript
+{
+  guide: {
+    id: string,
+    title: string,
+  },
+}
+```
+
+### `ContactListItemClick`
+
+Emitted when clicking a contact item in list (floating, inline & portal).
+
+#### Response:
+
+```typescript
+{
+  contactMethod: {
+    id: string,
+    title: string,
+  },
+}
+```
+
+### `ConversationMessage`
+
+Emitted when sending a message.
+
+#### Response:
+
+```typescript
+{
+  sender: string; // agent, user, system
+}
+```
+
+### `ContactLinkClick`
+
+Emitted when clicking a contact link.
+
+#### Response:
+
+```typescript
+{
+  location: Location,
+  guide: {
+    id: string,
+    title: string,
+  },
+}
+```
+
+### `FeedbackGivenBot`
+
+Emitted when giving feedback in bot dialog (bot).
+
+#### Response:
+
+```typescript
+{
+   feedbackResponse: string
+    guide: {
+      id: number,
+      title: string,
+    },
+}
+```
+
+### `GuideCategoryListItemClicked`
+
+Emitted when clicking a guide category item in a list.
+
+#### Response:
+
+```typescript
+{
+  id: string,
+  title: string,
+}
+```
+
+### `HttpClientError`
+
+Emitted when an error occurrs in the httpClinet.
+
+#### Response:
+
+```typescript
+{
+  location: string,
+  message: string,
+  error: any,
 }
 ```
 
